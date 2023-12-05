@@ -6,12 +6,12 @@
                 <div class="col-lg-7">
                     <nav class="main-menu">
                         <ul>
-                            <li class="active"><a href="/">HOME</a></li>
-                            <li><a href="property">SERVICE</a></li>
+                            <li class="active"><a href="{{ route('home') }}">HOME</a></li>
+                            <li><a href="{{ route('service') }}">SERVICE</a></li>
                             <!-- <li><a href="/po">Agets</a></li> -->
-                            <li><a href="/blog">News</a></li>
-                            <li><a href="/about-us">About</a></li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="{{ route('blog') }}">News</a></li>
+                            <li><a href="{{ route('about') }}">About</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="/"><img src="{{asset('client/img/Logo_NewCentury4.png')}}" alt=""></a>
+                        <a href="/"><img height="80px" src="{{asset( isset($Information) ? $Information->logo : 'client/img/Logo_NewCentury4.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -50,21 +50,21 @@
                                 <i class="icon_phone"></i>
                                 <div class="info-text">
                                     <span>Phone:</span>
-                                    <p>(+12) 345 6789</p>
+                                    <p><a class="text-black-50" href="tel:+{{ isset($Information) ? $Information->phone : ''}}">{{ isset($Information) ? $Information->phone : '(+12) 345 6789' }}</a></p>
                                 </div>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <i class="icon_map"></i>
                                 <div class="info-text">
                                     <span>Address:</span>
-                                    <p>16 Creek Ave, <span>NY</span></p>
+                                    <p>{{ isset($Information) ? $Information->address : '16 Creek Ave, <span>NY</span>' }}</p>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li>
                                 <i class="icon_mail"></i>
                                 <div class="info-text">
                                     <span>Email:</span>
-                                    <p>Info.cololib@gmail.com</p>
+                                    <p><a class="text-black-50" href="mailto:{{ isset($Information) ? $Information->email : ''}}">{{ isset($Information) ? $Information->email : 'Info.cololib@gmail.com' }}</a></p>
                                 </div>
                             </li>
                         </ul>

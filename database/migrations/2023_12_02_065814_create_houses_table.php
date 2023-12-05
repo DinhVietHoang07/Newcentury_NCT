@@ -19,11 +19,14 @@ return new class extends Migration
             $table->string('address');
             $table->integer('number_of_bedrooms');
             $table->integer('number_of_bathrooms');
-            $table->decimal('area');
-            $table->decimal('rent_price');
-            $table->decimal('sale_price')->nullable();
-            $table->enum('status', ['for_rent','not_available']);
-            $table->timestamps();        });
+            $table->decimal('area', 12, 2);
+            $table->decimal('rent_price', 12, 2);
+            $table->decimal('sale_price', 12, 2)->nullable();
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services');
+            $table->json('images')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
