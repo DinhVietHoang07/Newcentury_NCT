@@ -1,7 +1,5 @@
 @extends('client.layout.main')
 @section('content')
-
-
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section contact-page">
         <div class="container">
@@ -49,11 +47,15 @@
                                     <span>Contact</span>
                                     <h2>Get In Touch</h2>
                                 </div>
-                                <form action="#" class="contact-form">
-                                    <input type="text" placeholder="Name">
-                                    <input type="text" placeholder="Email">
-                                    <input type="text" placeholder="Website">
-                                    <textarea placeholder="Messages"></textarea>
+                                <form action="{{ route('contact') }}" method="post" class="contact-form">
+                                    @csrf
+                                    <input class="@error('name') border-danger @enderror" name="name" type="text"
+                                        placeholder="Name">
+                                    <input class="@error('email') border-danger @enderror" name="email" type="text"
+                                        placeholder="Email">
+                                    <input class="@error('website') border-danger @enderror" name="website" type="text"
+                                        placeholder="Website">
+                                    <textarea placeholder="Messages" class="@error('message') border-danger @enderror" name="message"></textarea>
                                     <button type="submit" class="site-btn">Send Message</button>
                                 </form>
                             </div>
@@ -71,27 +73,27 @@
             <div class="partner-carousel owl-carousel">
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-1.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-1.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-2.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-2.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-3.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-3.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-4.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-4.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-5.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-5.png') }}" alt="">
                     </div>
                 </a>
             </div>
@@ -99,6 +101,15 @@
     </div>
     <!-- Partner Carousel Section End -->
 
+    <script src="{{ asset('admin/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
 
-
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Success!",
+                text: '{{ session('success') }}',
+                icon: "success"
+            });
+        </script>
+    @endif
 @endsection

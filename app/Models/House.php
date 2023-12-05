@@ -17,9 +17,13 @@ class House extends Model
         'area',
         'rent_price',
         'sale_price',
-        'status',
+        'service_id',
         'images', // Thêm trường images
     ];
+    public function Service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }
 // public function getImagesUrlAttribute()
 // {

@@ -1,12 +1,46 @@
 @extends('client.layout.main')
 @section('content')
-
-
-
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-item set-bg" data-setbg="{{asset('client/img/hero/hero-1.jpg')}}">
+            @foreach ($banner as $bn)
+                <div class="single-hero-item set-bg" data-setbg="{{ asset($bn->images[0]) }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="hero-text">
+                                    <p class="room-location"><i class="icon_pin"></i> {{ $bn->address }}
+                                    </p>
+                                    <h2>{{ $bn->house_name }}</h2>
+                                    <div class="room-price">
+                                        <span>Start Form:</span>
+                                        <p>${{ $bn->rent_price }}</p>
+                                    </div>
+                                    <ul class="room-features">
+                                        <li>
+                                            <i class="fa fa-arrows"></i>
+                                            <p>{{ $bn->area }} sqft</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed"></i>
+                                            <p>{{ $bn->number_of_bedrooms }} Bed Room</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bath"></i>
+                                            <p>{{ $bn->number_of_bathrooms }} Baths Bed</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-car"></i>
+                                            <p>1 Garage</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            {{-- <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-2.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2">
@@ -40,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-item set-bg" data-setbg="{{asset('client/img/hero/hero-2.jpg')}}">
+            <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-3.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2">
@@ -73,53 +107,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-hero-item set-bg" data-setbg="{{asset('client/img/hero/hero-3.jpg')}}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
-                            <div class="hero-text">
-                                <p class="room-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</p>
-                                <h2>Villa 9721 Glen Creek</h2>
-                                <div class="room-price">
-                                    <span>Start Form:</span>
-                                    <p>$3.000.000</p>
-                                </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>5201 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>8 Bed Room</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>7 Baths Bed</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>1 Garage</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> --}}
         </div>
         <div class="thumbnail-pic">
             <div class="thumbs owl-carousel">
-                <div class="item">
-                    <img src="{{asset('client/img/hero/dot-1.jpg')}}" alt="">
+                @foreach ($banner as $bn)
+                    <div class="item">
+                        <img src="{{ asset($bn->images[0]) }}" height="94px" alt="">
+                    </div>
+                @endforeach
+                {{-- <div class="item">
+                    <img src="{{ asset('client/img/hero/dot-2.jpg') }}" alt="">
                 </div>
                 <div class="item">
-                    <img src="{{asset('client/img/hero/dot-2.jpg')}}" alt="">
-                </div>
-                <div class="item">
-                    <img src="{{asset('client/img/hero/dot-3.jpg')}}" alt="">
-                </div>
+                    <img src="{{ asset('client/img/hero/dot-3.jpg') }}" alt="">
+                </div> --}}
             </div>
         </div>
     </section>
@@ -196,23 +198,26 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="single-howit-works">
-                        <img src="{{asset('client/img/howit-works/howit-works-1.png')}}" alt="">
+                        <img src="{{ asset('client/img/howit-works/howit-works-1.png') }}" alt="">
                         <h4>Search & Find Apertment</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore.</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="single-howit-works">
-                        <img src="{{asset('client/img/howit-works/howit-works-2.png')}}" alt="">
+                        <img src="{{ asset('client/img/howit-works/howit-works-2.png') }}" alt="">
                         <h4>Find Your Room</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore.</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="single-howit-works">
-                        <img src="{{asset('client/img/howit-works/howit-works-3.png')}}" alt="">
+                        <img src="{{ asset('client/img/howit-works/howit-works-3.png') }}" alt="">
                         <h4>Talk To Agent</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore.</p>
                     </div>
                 </div>
             </div>
@@ -235,14 +240,14 @@
                 <div class="feature-carousel owl-carousel">
                     <div class="col-lg-4">
                         <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{asset('client/img/feature/feature-1.jpg')}}">
+                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-1.jpg') }}">
                                 <div class="pic-tag">
                                     <div class="f-text">feauture</div>
                                     <div class="s-text">For Sale</div>
                                 </div>
                                 <div class="feature-author">
                                     <div class="fa-pic">
-                                        <img src="{{asset('client/img/feature/f-author-1.jpg')}}" alt="">
+                                        <img src="{{ asset('client/img/feature/f-author-1.jpg') }}" alt="">
                                     </div>
                                     <div class="fa-text">
                                         <span>Rena Simmons</span>
@@ -281,14 +286,14 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{asset('client/img/feature/feature-2.jpg')}}">
+                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-2.jpg') }}">
                                 <div class="pic-tag">
                                     <div class="f-text">feauture</div>
                                     <div class="s-text">For Sale</div>
                                 </div>
                                 <div class="feature-author">
                                     <div class="fa-pic">
-                                        <img src="{{asset('client/img/feature/f-author-2.jpg')}}" alt="">
+                                        <img src="{{ asset('client/img/feature/f-author-2.jpg') }}" alt="">
                                     </div>
                                     <div class="fa-text">
                                         <span>Rena Johnston</span>
@@ -327,14 +332,14 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{asset('client/img/feature/feature-3.jpg')}}">
+                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-3.jpg') }}">
                                 <div class="pic-tag">
                                     <div class="f-text">feauture</div>
                                     <div class="s-text">For Sale</div>
                                 </div>
                                 <div class="feature-author">
                                     <div class="fa-pic">
-                                        <img src="{{asset('client/img/feature/f-author-3.jpg')}}" alt="">
+                                        <img src="{{ asset('client/img/feature/f-author-3.jpg') }}" alt="">
                                     </div>
                                     <div class="fa-text">
                                         <span>Jonathan Walters</span>
@@ -373,14 +378,14 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{asset('client/img/feature/feature-4.jpg')}}">
+                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-4.jpg') }}">
                                 <div class="pic-tag">
                                     <div class="f-text">feauture</div>
                                     <div class="s-text">For Sale</div>
                                 </div>
                                 <div class="feature-author">
                                     <div class="fa-pic">
-                                        <img src="{{asset('client/img/feature/f-author-3.jpg')}}" alt="">
+                                        <img src="{{ asset('client/img/feature/f-author-3.jpg') }}" alt="">
                                     </div>
                                     <div class="fa-text">
                                         <span>Jonathan Walters</span>
@@ -419,14 +424,14 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{asset('client/img/feature/feature-5.jpg')}}">
+                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-5.jpg') }}">
                                 <div class="pic-tag">
                                     <div class="f-text">feauture</div>
                                     <div class="s-text">For Sale</div>
                                 </div>
                                 <div class="feature-author">
                                     <div class="fa-pic">
-                                        <img src="{{asset('client/img/feature/f-author-3.jpg')}}" alt="">
+                                        <img src="{{ asset('client/img/feature/f-author-3.jpg') }}" alt="">
                                     </div>
                                     <div class="fa-text">
                                         <span>Jonathan Walters</span>
@@ -470,12 +475,13 @@
     <!-- Feature Section End -->
 
     <!-- Video Section Begin -->
-    <div class="video-section set-bg" data-setbg="{{asset('client/img/video-bg.jpg')}}">
+    <div class="video-section set-bg" data-setbg="{{ asset('client/img/video-bg.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="video-text">
-                        <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                        <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i
+                                class="fa fa-play"></i></a>
                         <h4>Find The Perfect</h4>
                         <h2>Real Estate Agent Near You</h2>
                     </div>
@@ -506,7 +512,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="stp-pic">
-                                <img src="{{asset('client/img/properties/properties-1.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/properties/properties-1.jpg') }}" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -517,8 +523,10 @@
                                     <span>Start From:</span>
                                     <h4>$3.000.000</h4>
                                 </div>
-                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston
+                                    Spa, NY</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua.</p>
                                 <ul class="room-features">
                                     <li>
                                         <i class="fa fa-arrows"></i>
@@ -545,7 +553,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="stp-pic">
-                                <img src="{{asset('client/img/properties/properties-2.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/properties/properties-2.jpg') }}" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -556,8 +564,10 @@
                                     <span>Start From:</span>
                                     <h4>$3.000.000</h4>
                                 </div>
-                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston
+                                    Spa, NY</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua.</p>
                                 <ul class="room-features">
                                     <li>
                                         <i class="fa fa-arrows"></i>
@@ -601,7 +611,7 @@
                     <div class="col-lg-3">
                         <div class="single-agent">
                             <div class="sa-pic">
-                                <img src="{{asset('client/img/agent/agent-1.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/agent/agent-1.jpg') }}" alt="">
                                 <div class="hover-social">
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -614,7 +624,7 @@
                     <div class="col-lg-3">
                         <div class="single-agent">
                             <div class="sa-pic">
-                                <img src="{{asset('client/img/agent/agent-2.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/agent/agent-2.jpg') }}" alt="">
                                 <div class="hover-social">
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -627,7 +637,7 @@
                     <div class="col-lg-3">
                         <div class="single-agent">
                             <div class="sa-pic">
-                                <img src="{{asset('client/img/agent/agent-3.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/agent/agent-3.jpg') }}" alt="">
                                 <div class="hover-social">
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -640,7 +650,7 @@
                     <div class="col-lg-3">
                         <div class="single-agent">
                             <div class="sa-pic">
-                                <img src="{{asset('client/img/agent/agent-4.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/agent/agent-4.jpg') }}" alt="">
                                 <div class="hover-social">
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -653,7 +663,7 @@
                     <div class="col-lg-3">
                         <div class="single-agent">
                             <div class="sa-pic">
-                                <img src="{{asset('client/img/agent/agent-5.jpg')}}" alt="">
+                                <img src="{{ asset('client/img/agent/agent-5.jpg') }}" alt="">
                                 <div class="hover-social">
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -684,7 +694,7 @@
                 <div class="col-lg-4">
                     <div class="single-blog-item">
                         <div class="sb-pic">
-                            <img src="{{asset('client/img/blog/latest-1.jpg')}}" alt="">
+                            <img src="{{ asset('client/img/blog/latest-1.jpg') }}" alt="">
                         </div>
                         <div class="sb-text">
                             <ul>
@@ -698,7 +708,7 @@
                 <div class="col-lg-4">
                     <div class="single-blog-item">
                         <div class="sb-pic">
-                            <img src="{{asset('client/img/blog/latest-2.jpg')}}" alt="">
+                            <img src="{{ asset('client/img/blog/latest-2.jpg') }}" alt="">
                         </div>
                         <div class="sb-text">
                             <ul>
@@ -712,7 +722,7 @@
                 <div class="col-lg-4">
                     <div class="single-blog-item">
                         <div class="sb-pic">
-                            <img src="{{asset('client/img/blog/latest-3.jpg')}}" alt="">
+                            <img src="{{ asset('client/img/blog/latest-3.jpg') }}" alt="">
                         </div>
                         <div class="sb-text">
                             <ul>
@@ -734,35 +744,31 @@
             <div class="partner-carousel owl-carousel">
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-1.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-1.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-2.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-2.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-3.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-3.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-4.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-4.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-5.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-5.png') }}" alt="">
                     </div>
                 </a>
             </div>
         </div>
     </div>
     <!-- Partner Carousel Section End -->
-
-
-
-
 @endsection

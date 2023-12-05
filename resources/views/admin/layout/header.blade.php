@@ -6,9 +6,9 @@
             <div class="brand-logo">
                 <a href="index.html">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                    <span class="logo-compact"><img src="{{ asset('images/logo-compact.png') }}" alt=""></span>
                     <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <img src="{{ asset('images/logo-text.png') }}" alt="">
                     </span>
                 </a>
             </div>
@@ -189,7 +189,7 @@
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{{ route('logout') }}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -2,45 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HouseRequest;
 use Illuminate\Http\Request;
 use App\Models\House;
+use App\Models\Service;
+
 class HouseController extends Controller
 {
-   public function create(Request $request)
-{
-    // Kiểm tra va xử lý dữ liệu từ form
-    $validatedData = $request->validate([
-        'house_name' => 'required|string|max:255',
-        'address' => 'required|string|max:255',
-        'number_of_bedrooms' => 'required|integer',
-        'number_of_bathrooms' => 'required|integer',
-        'area' => 'required|numeric',
-        'status' => 'required|in:for_rent,not_available',
-        'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Thêm quy tắc kiểm tra ảnh
-        //Thêm các quy tắc kiểm tra khác nếu cần
-    ]);
 
-    // Lưu dữ liệu vào cơ sở dữ liệu
-    $house = new House();
-    $house -> house_name = $validatedData['house_name'];
-    $house -> address = $validatedData['address'];
-    $house -> number_of_bedrooms = $validatedData['number_of_bedrooms'];
-    $house -> number_of_bathrooms = $validatedData['number_of_bathrooms'];
-    $house -> area = $validatedData['area'];
-    $house -> rent_price = $validatedData['rent_price'];
-    $house -> status = $validatedData['status'];
-
-    // Lưu ảnh vào storage và lưu đường dẫn vào trường images
-    if ($request->hasFile('image')){
-        $imagePath = $request->file('images')->store('house_image', 'public');
-        $house->image = $imagePath;
+    public function index()
+    {
+        $data = House::with('service')->latest()->get();
+        // dd($data);
+        return view('admin.house.index', compact('data'));
     }
-    // $house = House::find(1);
-    // $imageUrl = $house->images_url;
-    // Thêm các trường khác nếu cần
-    $house -> save();
+    public function create()
+    {
+        $service = Service::all();
+        return view('admin.house.creater', compact('service'));
+    }
+    public function store(HouseRequest $request)
+    {
+        
+        $data = $request->all();
+        unset($data['_token']);
+        if ($request->hasFile('images')) {
+            $images = [];
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->storeAs('public/images', $imageName);
+                $images[] = 'storage/images/' . $imageName;
+            }
+            $data['images'] =  json_encode($images);
+        }
+        // dd(json_encode($images));
+        House::create($data);
 
-    // Redirect hoặc thực hiện hành động sau khi lưu dữ liệu
-    return redirect() -> route('home')->with('success', 'Sản phẩm đã được đăng thành công!');
-}
+        // Redirect hoặc thực hiện hành động sau khi lưu dữ liệu
+        return redirect()->route('admin.house.index')->with('success', 'Sản phẩm đã được đăng thành công!');
+    }
+    public function edit($id)
+    {
+        $service = Service::all();
+        $house = House::find($id);
+        $house->images = json_decode($house->images);
+        return view('admin.house.creater', compact('house', 'service'));
+    }
+    public function update($id, HouseRequest $request)
+    {
+        $house = House::find($id);
+        $data = $request->all();
+        unset($data['_token']);
+        if ($request->hasFile('images')) {
+            $images = [];
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->storeAs('public/images', $imageName);
+                $images[] = 'storage/images/' . $imageName;
+            }
+            $data['images'] =  json_encode($images);
+        }
+        // dd(json_encode($images));
+        $house->update($data);
+
+        // Redirect hoặc thực hiện hành động sau khi lưu dữ liệu
+        return redirect()->route('admin.house.index')->with('success', 'Sản phẩm đã được sửa thành công!');
+    }
+    public function delete($id)
+    {
+        $house = House::find($id);
+        $house->delete();
+        // Redirect hoặc thực hiện hành động sau khi lưu dữ liệu
+        return response()->json(['success' => 'Sản phẩm đã được xóa thành công!']);
+    }
 }
