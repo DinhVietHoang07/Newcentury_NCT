@@ -3,31 +3,69 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            @foreach ($banner as $bn)
-                <div class="single-hero-item set-bg" data-setbg="{{ asset($bn->images[0]) }}">
+            @if (count($banner) == 3)
+                @foreach ($banner as $index => $bn)
+                    <div class="single-hero-item set-bg" data-setbg="{{ asset(isset($bn->images[0]) ? $bn->images[0] : 'client/img/hero/hero-1.jpg') }}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2">
+                                    <div class="hero-text">
+                                        <p class="room-location"><i class="icon_pin"></i> {{ $bn->address }}
+                                        </p>
+                                        <h2>{{ $bn->house_name }}</h2>
+                                        <div class="room-price">
+                                            <span>Start Form:</span>
+                                            <p>${{ $bn->rent_price }}</p>
+                                        </div>
+                                        <ul class="room-features">
+                                            <li>
+                                                <i class="fa fa-arrows"></i>
+                                                <p>{{ $bn->area }} sqft</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-bed"></i>
+                                                <p>{{ $bn->number_of_bedrooms }} Bed Room</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-bath"></i>
+                                                <p>{{ $bn->number_of_bathrooms }} Baths Bed</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-car"></i>
+                                                <p>1 Garage</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-1.jpg') }}">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8 offset-lg-2">
                                 <div class="hero-text">
-                                    <p class="room-location"><i class="icon_pin"></i> {{ $bn->address }}
+                                    <p class="room-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY
                                     </p>
-                                    <h2>{{ $bn->house_name }}</h2>
+                                    <h2>Villa 9721 Glen Creek</h2>
                                     <div class="room-price">
                                         <span>Start Form:</span>
-                                        <p>${{ $bn->rent_price }}</p>
+                                        <p>$3.000.000</p>
                                     </div>
                                     <ul class="room-features">
                                         <li>
                                             <i class="fa fa-arrows"></i>
-                                            <p>{{ $bn->area }} sqft</p>
+                                            <p>5201 sqft</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-bed"></i>
-                                            <p>{{ $bn->number_of_bedrooms }} Bed Room</p>
+                                            <p>8 Bed Room</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-bath"></i>
-                                            <p>{{ $bn->number_of_bathrooms }} Baths Bed</p>
+                                            <p>7 Baths Bed</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-car"></i>
@@ -39,89 +77,98 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
-            {{-- <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-2.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
-                            <div class="hero-text">
-                                <p class="room-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</p>
-                                <h2>Villa 9721 Glen Creek</h2>
-                                <div class="room-price">
-                                    <span>Start Form:</span>
-                                    <p>$3.000.000</p>
+                <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-2.jpg') }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="hero-text">
+                                    <p class="room-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY
+                                    </p>
+                                    <h2>Villa 9721 Glen Creek</h2>
+                                    <div class="room-price">
+                                        <span>Start Form:</span>
+                                        <p>$3.000.000</p>
+                                    </div>
+                                    <ul class="room-features">
+                                        <li>
+                                            <i class="fa fa-arrows"></i>
+                                            <p>5201 sqft</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed"></i>
+                                            <p>8 Bed Room</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bath"></i>
+                                            <p>7 Baths Bed</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-car"></i>
+                                            <p>1 Garage</p>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>5201 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>8 Bed Room</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>7 Baths Bed</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>1 Garage</p>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-3.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
-                            <div class="hero-text">
-                                <p class="room-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</p>
-                                <h2>Villa 9721 Glen Creek</h2>
-                                <div class="room-price">
-                                    <span>Start Form:</span>
-                                    <p>$3.000.000</p>
+                <div class="single-hero-item set-bg" data-setbg="{{ asset('client/img/hero/hero-3.jpg') }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="hero-text">
+                                    <p class="room-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY
+                                    </p>
+                                    <h2>Villa 9721 Glen Creek</h2>
+                                    <div class="room-price">
+                                        <span>Start Form:</span>
+                                        <p>$3.000.000</p>
+                                    </div>
+                                    <ul class="room-features">
+                                        <li>
+                                            <i class="fa fa-arrows"></i>
+                                            <p>5201 sqft</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed"></i>
+                                            <p>8 Bed Room</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bath"></i>
+                                            <p>7 Baths Bed</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-car"></i>
+                                            <p>1 Garage</p>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>5201 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>8 Bed Room</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>7 Baths Bed</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>1 Garage</p>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            @endif
         </div>
         <div class="thumbnail-pic">
             <div class="thumbs owl-carousel">
-                @foreach ($banner as $bn)
+                @if (count($banner) == 3)
+                    @foreach ($banner as $bn)
+                        <div class="item">
+                            <img src="{{ asset(isset($bn->images[0]) ? $bn->images[0] : 'client/img/hero/dot-1.jpg') }}"  height="94px" alt="">
+                        </div>
+                    @endforeach
+                @else
                     <div class="item">
-                        <img src="{{ asset($bn->images[0]) }}" height="94px" alt="">
+                        <img src="{{ asset('client/img/hero/dot-1.jpg') }}" alt="">
                     </div>
-                @endforeach
-                {{-- <div class="item">
-                    <img src="{{ asset('client/img/hero/dot-2.jpg') }}" alt="">
-                </div>
-                <div class="item">
-                    <img src="{{ asset('client/img/hero/dot-3.jpg') }}" alt="">
-                </div> --}}
+                    <div class="item">
+                        <img src="{{ asset('client/img/hero/dot-2.jpg') }}" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('client/img/hero/dot-3.jpg') }}" alt="">
+                    </div>
+                @endif
+
             </div>
         </div>
     </section>

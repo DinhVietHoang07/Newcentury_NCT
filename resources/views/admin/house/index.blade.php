@@ -28,8 +28,8 @@
                                             <th>Tên căn nhà</th>
                                             <th>Địa chỉ</th>
                                             <th>Số phòng ngủ</th>
-                                            <th>Số phòng tắm</th>
-                                            <th>Diện tích (m<sup>2</sup>)</th>
+                                            <th>Diện tích phòng ngủ (m<sup>2</sup>)</th>
+                                            <th>Diện tích căn (m<sup>2</sup>)</th>
                                             <th>Giá (VNĐ)</th>
                                             <th>Loại dịch vụ</th>
                                             <th>Chức năng</th>
@@ -41,7 +41,7 @@
                                                 <td>{{ $el->house_name }}</td>
                                                 <td>{{ $el->address }}</td>
                                                 <td>{{ $el->number_of_bedrooms }}</td>
-                                                <td>{{ $el->number_of_bathrooms }}</td>
+                                                <td>{{ $el->area_bedrooms }}</td>
                                                 <td>{{ $el->area }}</td>
                                                 <td>{{ number_format($el->rent_price) }}</td>
                                                 <td>{{ $el->service->name }}</td>
@@ -62,8 +62,8 @@
                                             <th>Tên căn nhà</th>
                                             <th>Địa chỉ</th>
                                             <th>Số phòng ngủ</th>
-                                            <th>Số phòng tắm</th>
-                                            <th>Diện tích (m<sup>2</sup>)</th>
+                                            <th>Diện tích phòng ngủ (m<sup>2</sup>)</th>
+                                            <th>Diện tích căn (m<sup>2</sup>)</th>
                                             <th>Giá (VNĐ)</th>
                                             <th>Loại dịch vụ</th>
                                             <th>Chức năng</th>

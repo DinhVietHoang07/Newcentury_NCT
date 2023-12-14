@@ -50,13 +50,9 @@ Route::prefix('/')->group(function () {
         return view('client/about-us');
     })->name('about');
 
-    Route::get('/service', function () {
-        return view('client/service');
-    })->name('service');
+    Route::get('/service/{slug}', [ClientController::class, 'service'])->name('service');
 
-    Route::get('/service-details', function () {
-        return view('client/service-details');
-    })->name('service-detail');
+    Route::get('/service-detail/{id}',[ClientController::class, 'serviceDetail'])->name('service-detail');
 });
 
 //ADMIN VIEW

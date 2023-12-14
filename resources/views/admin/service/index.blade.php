@@ -28,6 +28,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Tên</th>
+                                                    <th>Loại hình</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -35,6 +36,7 @@
                                                 @foreach ($data as $el)
                                                     <tr id="tr{{ $el->id }}">
                                                         <td>{{ $el->name }}</td>
+                                                        <td>{{ $el->type == 'for_rent' ? 'Cho thuê' : 'Bảo trì'}}</td>
                                                         <td><span><a href="{{ route('admin.service.edit', $el->id) }}"
                                                                     data-toggle="tooltip" data-placement="top"
                                                                     title="" data-original-title="Edit"><i
@@ -54,6 +56,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>Tên</th>
+                                                    <th>Loại hình</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </tfoot>
@@ -79,6 +82,20 @@
                                                         name="name" placeholder="Nhập tên ngôi nhà..">
                                                 </div>
                                                 @error('name')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="form-label" for="name">Loại hình <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-12 p-0">
+                                                    <input type="radio" value="for_rent" id="for_rent" name="type"
+                                                        placeholder="Lọai hình" checked> <label for="for_rent">Cho thuê</label>
+                                                    <input type="radio" value="maintenance" id="maintenance" name="type"
+                                                        placeholder="Lọai hình"> <label for="maintenance">Bảo trì</label>
+                                                </div>
+                                                @error('type')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>

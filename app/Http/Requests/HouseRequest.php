@@ -25,11 +25,11 @@ class HouseRequest extends FormRequest
     {
         return [
             'house_name' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'number_of_bedrooms' => 'required|integer|between:1,9999999999',
-            'number_of_bathrooms' => 'required|integer|between:1,9999999999',
-            'area' => 'required|numeric|min:0|between:1,9999999999',
-            'rent_price' => 'required|numeric|between:1,9999999999',
+            // 'address' => 'required|string|max:255',
+            // 'number_of_bedrooms' => 'required|integer|between:1,9999999999',
+            // 'area_bedrooms' => 'required|integer|between:1,9999999999',
+            // 'area' => 'required|numeric|min:0|between:1,9999999999',
+            // 'rent_price' => 'numeric|between:1,9999999999',
             'service_id' => 'required',
             // 'images' => 'required|image|size:3072' // Thêm quy tắc kiểm tra ảnh
         ];
