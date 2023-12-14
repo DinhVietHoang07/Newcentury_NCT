@@ -13,12 +13,14 @@ class House extends Model
         'house_name',
         'address',
         'number_of_bedrooms',
-        'number_of_bathrooms',
+        'area_bedrooms',
         'area',
         'rent_price',
-        'sale_price',
+        'content',
         'service_id',
         'images', // Thêm trường images
+        'viewer',
+        'option'
     ];
     public function Service()
     {

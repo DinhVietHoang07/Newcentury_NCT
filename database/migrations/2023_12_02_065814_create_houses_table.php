@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('house_name');
-            $table->string('address');
-            $table->integer('number_of_bedrooms');
-            $table->integer('number_of_bathrooms');
-            $table->decimal('area', 12, 2);
-            $table->decimal('rent_price', 12, 2);
-            $table->decimal('sale_price', 12, 2)->nullable();
+            $table->string('address')->nullable();
+            $table->integer('number_of_bedrooms')->nullable();
+            $table->integer('area_bedrooms')->nullable();
+            $table->decimal('area', 12, 2)->nullable();
+            $table->decimal('rent_price', 12, 2)->nullable();
+            $table->longtext('content')->nullable();
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services');
             $table->json('images')->nullable();

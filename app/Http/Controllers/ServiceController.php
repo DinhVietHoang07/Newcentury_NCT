@@ -16,11 +16,9 @@ class ServiceController extends Controller
     }
     public function store(ServiceRequest $request)
     {
-        $service = new Service([
-            'name' => $request->name,
-        ]);
-        // dd(json_encode($images));
-        $service->save();
+        $service = new Service();
+        // dd($request->all());
+        $service->create($request->all());
 
         // Redirect hoặc thực hiện hành động sau khi lưu dữ liệu
         return redirect()->route('admin.service.index')->with('success', 'Dịch vụ đã được đăng thành công!');

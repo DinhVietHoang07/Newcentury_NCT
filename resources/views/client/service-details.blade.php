@@ -1,9 +1,7 @@
 @extends('client.layout.main')
 @section('content')
-
-
     <!-- Property Details Hero Section Begin -->
-    <section class="pd-hero-section set-bg" data-setbg="{{asset('client/img/properties/product-co')}}ntent-bg.jpg">
+    <section class="pd-hero-section set-bg" data-setbg="{{ asset('client/img/properties/product-co') }}ntent-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -54,20 +52,26 @@
                         </div>
                         <div class="property-more-pic">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="{{asset('client/img/properties/property-d')}}etails-b1.jpg" alt="">
+                                <img class="product-big-img"
+                                    src="{{ asset('client/img/properties/property-d') }}etails-b1.jpg" alt="">
                             </div>
                             <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
-                                    <div class="pt" data-imgbigurl="{{asset('client/img/properties/property-d')}}etails-b2.jpg"><img
-                                            src="{{asset('client/img/properties/thumb-1.jp')}}g" alt=""></div>
-                                    <div class="pt active" data-imgbigurl="{{asset('client/img/properties/property-d')}}etails-b1.jpg"><img
-                                            src="{{asset('client/img/properties/thumb-2.jp')}}g" alt=""></div>
-                                    <div class="pt" data-imgbigurl="{{asset('client/img/properties/property-d')}}etails-b3.jpg"><img
-                                            src="{{asset('client/img/properties/thumb-3.jp')}}g" alt=""></div>
-                                    <div class="pt" data-imgbigurl="{{asset('client/img/properties/property-d')}}etails-b4.jpg"><img
-                                            src="{{asset('client/img/properties/thumb-4.jp')}}g" alt=""></div>
-                                    <div class="pt" data-imgbigurl="{{asset('client/img/properties/property-d')}}etails-b5.jpg"><img
-                                            src="{{asset('client/img/properties/thumb-5.jp')}}g" alt=""></div>
+                                    <div class="pt"
+                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b2.jpg"><img
+                                            src="{{ asset('client/img/properties/thumb-1.jp') }}g" alt=""></div>
+                                    <div class="pt active"
+                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b1.jpg"><img
+                                            src="{{ asset('client/img/properties/thumb-2.jp') }}g" alt=""></div>
+                                    <div class="pt"
+                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b3.jpg"><img
+                                            src="{{ asset('client/img/properties/thumb-3.jp') }}g" alt=""></div>
+                                    <div class="pt"
+                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b4.jpg"><img
+                                            src="{{ asset('client/img/properties/thumb-4.jp') }}g" alt=""></div>
+                                    <div class="pt"
+                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b5.jpg"><img
+                                            src="{{ asset('client/img/properties/thumb-5.jp') }}g" alt=""></div>
                                 </div>
                             </div>
                         </div>
@@ -214,37 +218,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="property-contactus">
-                            <h4>Contact Us</h4>
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="agent-desc">
-                                        <img src="{{asset('client/img/properties/agent-cont')}}act.jpg" alt="">
-                                        <div class="agent-title">
-                                            <h5>Adam Smith</h5>
-                                            <span>Saler Marketing</span>
-                                        </div>
-                                        <div class="agent-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                            <a href="#"><i class="fa fa-envelope"></i></a>
-                                        </div>
-                                        <p>In today’s net-savvy world it has become common for any business to have a
-                                            website which they use mostly for advertising their products and services.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 offset-lg-1">
-                                    <form action="#" class="agent-contact-form">
-                                        <input type="text" placeholder="Name*">
-                                        <input type="text" placeholder="Email">
-                                        <textarea placeholder="Messages"></textarea>
-                                        <button type="submit" class="site-btn">Send Message</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -296,7 +269,7 @@
                             <h4>Best Agents</h4>
                             <a href="#" class="ba-item">
                                 <div class="ba-pic">
-                                    <img src="{{asset('client/img/properties/best-agent-1.jpg')}}" alt="">
+                                    <img src="{{ asset('client/img/properties/best-agent-1.jpg') }}" alt="">
                                 </div>
                                 <div class="ba-text">
                                     <h5>Lester Bradley</h5>
@@ -306,7 +279,7 @@
                             </a>
                             <a href="#" class="ba-item">
                                 <div class="ba-pic">
-                                    <img src="{{asset('client/img/properties/best-agent-2.jpg')}}" alt="">
+                                    <img src="{{ asset('client/img/properties/best-agent-2.jpg') }}" alt="">
                                 </div>
                                 <div class="ba-text">
                                     <h5>Janie Blair</h5>
@@ -316,7 +289,7 @@
                             </a>
                             <a href="#" class="ba-item">
                                 <div class="ba-pic">
-                                    <img src="{{asset('client/img/properties/best-agent-3.jpg')}}" alt="">
+                                    <img src="{{ asset('client/img/properties/best-agent-3.jpg') }}" alt="">
                                 </div>
                                 <div class="ba-text">
                                     <h5>Sophia Cole</h5>
@@ -338,34 +311,31 @@
             <div class="partner-carousel owl-carousel">
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-1.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-1.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-2.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-2.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-3.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-3.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-4.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-4.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-5.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-5.png') }}" alt="">
                     </div>
                 </a>
             </div>
         </div>
     </div>
     <!-- Partner Carousel Section End -->
-
-
-
 @endsection

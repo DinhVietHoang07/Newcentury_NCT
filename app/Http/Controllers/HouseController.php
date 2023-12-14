@@ -23,9 +23,26 @@ class HouseController extends Controller
     }
     public function store(HouseRequest $request)
     {
-        
         $data = $request->all();
-        unset($data['_token']);
+        $data['viewer'] = 0;
+        if ($data['service_category'] == 'ngan-han') {
+            $data['option'] = json_encode([
+                'service_category' => $data['service_category'],
+                'price_room_day' =>  $data['price_room_day'],
+                'price_room_month' =>  $data['price_room_month'],
+                'price_house_day' =>  $data['price_house_day'],
+                'price_house_month' =>  $data['price_house_month'],
+            ]);
+        }
+
+        if ($data['service_category'] == 'dai-han') {
+            $data['option'] = json_encode([
+                'service_category' => $data['service_category'],
+                'datetime_service' =>  $data['datetime_service'],
+            ]);
+        }
+        unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
+        // dd($data);
         if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $image) {
@@ -45,14 +62,31 @@ class HouseController extends Controller
     {
         $service = Service::all();
         $house = House::find($id);
+        $house->option = json_decode($house->option);
         $house->images = json_decode($house->images);
+        // dd($house->option->service_category);
         return view('admin.house.creater', compact('house', 'service'));
     }
     public function update($id, HouseRequest $request)
     {
         $house = House::find($id);
         $data = $request->all();
-        unset($data['_token']);
+        if ($data['service_category'] == 'ngan-han') {
+            $data['option'] = json_encode([
+                'price_room_day' =>  $data['price_room_day'],
+                'price_room_month' =>  $data['price_room_month'],
+                'price_house_day' =>  $data['price_house_day'],
+                'price_house_month' =>  $data['price_house_month'],
+            ]);
+        }
+
+        if ($data['service_category'] == 'dai-han') {
+            $data['option'] = json_encode([
+                'datetime_service' =>  $data['datetime_service'],
+            ]);
+        }
+        unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
+        // dd($data);
         if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $image) {

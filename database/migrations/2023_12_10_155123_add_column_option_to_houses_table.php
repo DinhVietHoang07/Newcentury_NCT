@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->enum('type',['for_rent', 'maintenance']);
-            $table->timestamps();
+        Schema::table('houses', function (Blueprint $table) {
+            $table->string('option')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::table('houses', function (Blueprint $table) {
+            //
+        });
     }
 };

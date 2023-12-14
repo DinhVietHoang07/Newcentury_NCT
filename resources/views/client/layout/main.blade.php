@@ -30,6 +30,7 @@
 <body>
     @php
         $Information = App\Models\Information::first();
+        $Service = App\Models\Service::get();
     @endphp
     <!-- Page Preloder -->
     <div id="preloder">
@@ -65,7 +66,7 @@
         <nav class="main-menu">
             <ul>
                 <li class="active"><a href="{{ route('home') }}">HOME</a></li>
-                <li><a href="{{ route('service') }}">SERVICE</a></li>
+                {{-- <li><a href="{{ route('service') }}">SERVICE</a></li> --}}
                 <!-- <li><a href="/po">Agets</a></li> -->
                 <li><a href="{{ route('blog') }}">News</a></li>
                 <li><a href="{{ route('about') }}">About</a></li>
