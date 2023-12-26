@@ -41,7 +41,8 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group row address" style="{{ isset($house) && $house->address != NUll ? '' : 'display: none;' }}">
+                                    <div class="form-group row address"
+                                        style="{{ isset($house) && $house->address != null ? '' : 'display: none;' }}">
                                         <label class="col-lg-3 col-form-label" for="address">Địa chỉ <span
                                                 class="text-danger">*</span>
                                         </label>
@@ -56,7 +57,8 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group row number_of_bedrooms"  style="{{ isset($house) && $house->number_of_bedrooms != NUll ? '' : 'display: none;' }}">
+                                    <div class="form-group row number_of_bedrooms"
+                                        style="{{ isset($house) && $house->number_of_bedrooms != null ? '' : 'display: none;' }}">
                                         <label class="col-lg-3 col-form-label" for="number_of_bedrooms">Số phòng ngủ <span
                                                 class="text-danger">*</span>
                                         </label>
@@ -71,7 +73,8 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group row area_bedrooms"  style="{{ isset($house) && $house->area_bedrooms != NUll ? '' : 'display: none;' }}">
+                                    <div class="form-group row area_bedrooms"
+                                        style="{{ isset($house) && $house->area_bedrooms != null ? '' : 'display: none;' }}">
                                         <label class="col-lg-3 col-form-label" for="area_bedrooms">Diện tích phòng ngủ<span
                                                 class="text-danger">*</span>
                                         </label>
@@ -86,7 +89,8 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group row area"  style="{{ isset($house) && $house->area != NUll ? '' : 'display: none;' }}">
+                                    <div class="form-group row area"
+                                        style="{{ isset($house) && $house->area != null ? '' : 'display: none;' }}">
                                         <label class="col-lg-3 col-form-label" for="area">Diện tích căn phòng(m2) <span
                                                 class="text-danger">*</span>
                                         </label>
@@ -120,7 +124,8 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
-                                            <select class="form-control @error('service_id') border border-danger @enderror"
+                                            <select
+                                                class="form-control @error('service_id') border border-danger @enderror"
                                                 id="service_id" name="service_id">
                                                 <option value="">Chọn loại dịch vụ</option>
                                                 @foreach ($service as $sv)
@@ -235,6 +240,14 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
+                                    <div class="form-group convenient">
+                                        <label>Tiện nghi</label>
+                                        <textarea id="addConvenient" class="form-control @error('convenient') border border-danger @enderror"
+                                            placeholder="Enter convenient post" name="convenient">{{ isset($house) ? $house->convenient : old('convenient') }}</textarea>
+                                        @error('convenient')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                     <div class="form-group content">
                                         <label>Nội dung</label>
                                         <textarea id="addContent" class="form-control @error('content') border border-danger @enderror"
@@ -262,6 +275,11 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
         $('#addContent').summernote({
+            placeholder: 'Nội dung',
+            tabsize: 2,
+            height: 300
+        });
+        $('#addConvenient').summernote({
             placeholder: 'Nội dung',
             tabsize: 2,
             height: 300
@@ -307,25 +325,25 @@
             //nếu là bảo trì và xu-ly-tham-ngam
             if ($('option:selected').data('slug') == 'bao-tri' || $('option:selected').data('slug') ==
                 'xu-ly-tham-ngam') {
-                $('.rent_price, .area, .area_bedrooms, .number_of_bedrooms, .address').css('display',
+                $('.rent_price, .area, .area_bedrooms, .number_of_bedrooms, .address, .convenient').css('display',
                     'none');
-                $('.rent_price, .area, .area_bedrooms, .number_of_bedrooms, .address').find('input').val(
-                    '');
-                    //ẩn các input k cần
+                // $('.rent_price, .area, .area_bedrooms, .number_of_bedrooms, .address').find('input').val(
+                //     '');
+                //ẩn các input k cần
                 $('.service_category').css('display', 'none');
                 $('.service_category').find('select').val('Chọn loại cho thuê');
                 $('.datetime_service').css('display', 'none');
-                $('.datetime_service').find('input').val('');
+                // $('.datetime_service').find('input').val('');
                 $('.price_service').css('display', 'none');
-                $('.price_service').find('input').val('');
+                // $('.price_service').find('input').val('');
             } else { // còn đây là cho thuê và chuyển nhượng
-                $('.area, .area_bedrooms, .number_of_bedrooms, .address').css('display', '');
+                $('.area, .area_bedrooms, .number_of_bedrooms, .address, .convenient').css('display', '');
                 if ($('option:selected').data('slug') == 'chuyen-nhuong') {
                     $('.rent_price').css('display', '');
-                    $('.rent_price').find('input').val('');
+                    // $('.rent_price').find('input').val('');
                 } else {
                     $('.rent_price').css('display', 'none');
-                    $('.rent_price').find('input').val('');
+                    // $('.rent_price').find('input').val('');
                 }
 
                 //nếu là cho thuê
@@ -338,31 +356,54 @@
                         if ($('#service_category option:selected').data('slug') == 'dai-han') {
                             //hiển thị tiền
                             $('.rent_price').css('display', '');
-                            $('.rent_price').find('input').val('');
+                            // $('.rent_price').find('input').val('');
                             $('.datetime_service').css('display', ''); // hiển thị thời hạn hợp đồng
                         } else {
                             $('.datetime_service').css('display', 'none');
-                            $('.datetime_service').find('input').val('');
+                            // $('.datetime_service').find('input').val('');
                         }
 
                         // check loại cho thuê nếu là ngắn hạn
                         if ($('#service_category option:selected').data('slug') == 'ngan-han') {
                             $('.rent_price').css('display', 'none');
-                            $('.rent_price').find('input').val('');
+                            // $('.rent_price').find('input').val('');
                             $('.price_service').css('display', ''); // hiển thị thời hạn hợp đồng
                         } else {
                             $('.price_service').css('display', 'none');
-                            $('.price_service').find('input').val('');
+                            // $('.price_service').find('input').val('');
                         }
                     })
                 } else {
                     $('.service_category').css('display', 'none');
                     $('.service_category').find('select').val('Chọn loại cho thuê');
                     $('.datetime_service').css('display', 'none');
-                    $('.datetime_service').find('input').val('');
+                    // $('.datetime_service').find('input').val('');
                     $('.price_service').css('display', 'none');
-                    $('.price_service').find('input').val('');
+                    // $('.price_service').find('input').val('');
                 }
+            }
+        })
+        // hiển thị select chọn loại cho thuê
+        $("#service_category").on('change', function() {
+            // check loại cho thuê nếu là dài hạn
+            if ($('#service_category option:selected').data('slug') == 'dai-han') {
+                //hiển thị tiền
+                $('.rent_price').css('display', '');
+                // $('.rent_price').find('input').val('');
+                $('.datetime_service').css('display', ''); // hiển thị thời hạn hợp đồng
+            } else {
+                $('.datetime_service').css('display', 'none');
+                // $('.datetime_service').find('input').val('');
+            }
+
+            // check loại cho thuê nếu là ngắn hạn
+            if ($('#service_category option:selected').data('slug') == 'ngan-han') {
+                $('.rent_price').css('display', 'none');
+                // $('.rent_price').find('input').val('');
+                $('.price_service').css('display', ''); // hiển thị thời hạn hợp đồng
+            } else {
+                $('.price_service').css('display', 'none');
+                // $('.price_service').find('input').val('');
             }
         })
     </script>

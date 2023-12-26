@@ -20,7 +20,8 @@ class House extends Model
         'service_id',
         'images', // Thêm trường images
         'viewer',
-        'option'
+        'option',
+        'convenient'
     ];
     public function Service()
     {

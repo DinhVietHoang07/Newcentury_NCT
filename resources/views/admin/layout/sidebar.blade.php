@@ -44,15 +44,6 @@
                     <li><a href="{{ route('admin.blog.index') }}">Bài viết</a></li>
                 </ul>
             </li>
-            <li class="mega-menu mega-menu-sm">
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-book-open menu-icon"></i><span class="nav-text">Bảo trì</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.blog.create') }}">Thêm mục bảo trì</a></li>
-                    <li><a href="{{ route('admin.blog.index') }}">Bảo trì</a></li>
-                </ul>
-            </li>
         </ul>
     </div>
 </div>

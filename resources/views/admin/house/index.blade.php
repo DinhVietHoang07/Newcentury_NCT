@@ -39,11 +39,11 @@
                                         @foreach ($data as $el)
                                             <tr id="tr{{ $el->id }}">
                                                 <td>{{ $el->house_name }}</td>
-                                                <td>{{ $el->address }}</td>
-                                                <td>{{ $el->number_of_bedrooms }}</td>
-                                                <td>{{ $el->area_bedrooms }}</td>
-                                                <td>{{ $el->area }}</td>
-                                                <td>{{ number_format($el->rent_price) }}</td>
+                                                <td>{{ isset($el->address) ? $el->address : '~~~' }}</td>
+                                                <td>{{ isset($el->number_of_bedrooms) ? $el->number_of_bedrooms : '~~~' }}</td>
+                                                <td>{{ isset($el->area_bedrooms) ? $el->area_bedrooms : '~~~' }}</td>
+                                                <td>{{ isset($el->area) ? $el->area : '~~~' }}</td>
+                                                <td>{{ isset($el->rent_price) ? number_format($el->rent_price) : '~~~' }}</td>
                                                 <td>{{ $el->service->name }}</td>
                                                 <td><span><a href="{{ route('admin.house.edit', $el->id) }}"
                                                             data-toggle="tooltip" data-placement="top" title=""

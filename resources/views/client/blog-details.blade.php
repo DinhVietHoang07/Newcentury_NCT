@@ -1,18 +1,16 @@
 @extends('client.layout.main')
 @section('content')
-
-
     <!-- Blog Details Hero Section Begin -->
-    <section class="blog-details-hero set-bg" data-setbg="{{asset('client/img/blog/blog-details-hero.jpg')}}">
+    <section class="blog-details-hero set-bg" data-setbg="{{ asset('client/img/blog/blog-details-hero.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bd-hero-text">
                         <span>Real Estate</span>
-                        <h2>Galliford saves hardest for last on <br />Thames resi scheme</h2>
+                        <h2>{{ $blog->title }}</h2>
                         <ul>
-                            <li><i class="fa fa-user"></i> Adam Smith</li>
-                            <li><i class="fa fa-clock-o"></i> 12th Feb, 2019</li>
+                            <li><i class="fa fa-user"></i> Admin</li>
+                            <li><i class="fa fa-clock-o"></i> {{ $blog->created_at->format('D m, Y') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -37,8 +35,8 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="blog-details-title">
-                        <h4>There is no better advertisement campaign that is low cost and also successful at the same
+                    {{-- <div class="blog-details-title"> --}}
+                    {{-- <h4>There is no better advertisement campaign that is low cost and also successful at the same
                             time.</h4>
                         <p>Great business ideas when utilized effectively can save lots of money. This is not only easy
                             for those who work full-time as an advertiser, but also for those who work from home.
@@ -60,11 +58,12 @@
                         <div class="blog-quote">
                             <p>“Hospitality is a very wide field to talk about, so in this article I’ll share few tips,
                                 small things that will make a big impact on your customers’ experience”.</p>
-                        </div>
-                    </div>
+                        </div> --}}
+                    <p>{!! $blog->content !!}</p>
+                    {{-- </div> --}}
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="blog-details-pic">
                         <div class="bd-pic-item small-item set-bg" data-setbg="{{asset('client/img/blog/blog-details-1.jpg')}}"></div>
@@ -73,8 +72,8 @@
                         <div class="bd-pic-item wide-item set-bg" data-setbg="{{asset('client/img/blog/blog-details-4.jpg')}}"></div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+            </div> --}}
+            {{-- <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="blog-more-details">
                         <h4>Fliers and business cards can be tacked.</h4>
@@ -105,116 +104,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="comment-option">
-                        <h4>2 Comments</h4>
-                        <div class="single-comment-item first-comment">
-                            <div class="sc-author">
-                                <img src="{{asset('client/img/blog/comment/comment-1.jpg')}}" alt="">
-                            </div>
-                            <div class="sc-text">
-                                <span>27 Aug 2019</span>
-                                <h5>Brandon Kelley</h5>
-                                <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non numquam eius modi tempora. incidunt ut labore et dolore
-                                    magnam.</p>
-                                <a href="#" class="comment-btn">Like</a>
-                                <a href="#" class="comment-btn">Reply</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-11 offset-lg-1">
-                                <div class="single-comment-item reply-comment">
-                                    <div class="sc-author">
-                                        <img src="{{asset('client/img/blog/comment/comment-2.jpg')}}" alt="">
-                                    </div>
-                                    <div class="sc-text">
-                                        <span>27 Aug 2019</span>
-                                        <h5>Mia Maya</h5>
-                                        <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet,
-                                            consectetur, adipisci velit, sed quia non numquam eius modi tempora.
-                                            incidunt ut labore et dolore magnam.</p>
-                                        <a href="#" class="comment-btn like-btn">Like</a>
-                                        <a href="#" class="comment-btn reply-btn">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-comment-item second-comment ">
-                            <div class="sc-author">
-                                <img src="{{asset('client/img/blog/comment/comment-3.jpg')}}" alt="">
-                            </div>
-                            <div class="sc-text">
-                                <span>27 Aug 2019</span>
-                                <h5>Mike Phillips</h5>
-                                <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non numquam eius modi tempora. incidunt ut labore et dolore
-                                    magnam.</p>
-                                <a href="#" class="comment-btn">Like</a>
-                                <a href="#" class="comment-btn">Reply</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="leave-comment">
-                        <h4>Leave A Comment</h4>
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Name">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Email">
-                                </div>
-                            </div>
-                            <input type="text" placeholder="Website">
-                            <textarea placeholder="Messages"></textarea>
-                            <button type="submit" class="site-btn">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>You May Also Like</h2>
+                        <h2>Một số bài liên quan</h2>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="single-blog-item">
-                        <div class="sb-pic">
-                            <img src="{{asset('client/img/blog/blog-details-also-1.j')}}pg" alt="">
-                        </div>
-                        <div class="sb-text">
-                            <ul>
-                                <li><i class="fa fa-user"></i> Adam Smith</li>
-                                <li><i class="fa fa-clock-o"></i> 18th Jan, 2019</li>
-                            </ul>
-                            <h4><a href="#">Computer users and programmers have become so accustomed to using
-                                    Windows.</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-blog-item">
-                        <div class="sb-pic">
-                            <img src="{{asset('client/img/blog/blog-details-also-2.j')}}pg" alt="">
-                        </div>
-                        <div class="sb-text">
-                            <ul>
-                                <li><i class="fa fa-user"></i> Adam Smith</li>
-                                <li><i class="fa fa-clock-o"></i> 18th Jan, 2019</li>
-                            </ul>
-                            <h4><a href="#">After all, Sport England has awarded Birmingham the title National City of
-                                    Sport.</a></h4>
+                @foreach ($blogs as $list)
+                    <div class="col-lg-6">
+                        <div class="single-blog-item">
+                            <div class="sb-pic">
+                                <img src="{{ asset($list->thumbnail) }}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <ul>
+                                    <li><i class="fa fa-user"></i> Admin</li>
+                                    <li><i class="fa fa-clock-o"></i> {{ $list->created_at->format('D m, Y') }}</li>
+                                    <li><i class="fa fa-eye"></i> {{ $list->viewer }}</li>
+                                </ul>
+                                <h4><a href="#">{{ $list->title }}</a></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -226,32 +139,31 @@
             <div class="partner-carousel owl-carousel">
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-1.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-1.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-2.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-2.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-3.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-3.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-4.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-4.png') }}" alt="">
                     </div>
                 </a>
                 <a href="#" class="partner-logo">
                     <div class="partner-logo-tablecell">
-                        <img src="{{asset('client/img/partner/partner-5.png')}}" alt="">
+                        <img src="{{ asset('client/img/partner/partner-5.png') }}" alt="">
                     </div>
                 </a>
             </div>
         </div>
     </div>
     <!-- Partner Carousel Section End -->
-
 @endsection

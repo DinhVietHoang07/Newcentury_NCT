@@ -29,7 +29,7 @@
     <section class="property-section spad">
         <div class="container">
             <div class="row">
-                {{-- <div class="col-lg-3">
+                <div class="col-lg-3">
                     <div class="property-sidebar">
                         <h4>Search Property</h4>
                         <form action="#" class="sidebar-search">
@@ -108,7 +108,7 @@
                             </a>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <div class="col-lg-9">
                     <h4 class="property-title">{{ $title }}</h4>
                     <div class="property-list">

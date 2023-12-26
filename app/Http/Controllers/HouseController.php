@@ -25,23 +25,35 @@ class HouseController extends Controller
     {
         $data = $request->all();
         $data['viewer'] = 0;
-        if ($data['service_category'] == 'ngan-han') {
-            $data['option'] = json_encode([
-                'service_category' => $data['service_category'],
-                'price_room_day' =>  $data['price_room_day'],
-                'price_room_month' =>  $data['price_room_month'],
-                'price_house_day' =>  $data['price_house_day'],
-                'price_house_month' =>  $data['price_house_month'],
-            ]);
-        }
+        // dd($data);
+        $service = Service::find($data['service_id'])->slug;
+        if ($service == 'cho-thue' || $service == 'chuyen-nhuong') {
+            $data['option'] = Null;
+            if ($data['service_category'] == 'ngan-han') {
+                $data['rent_price'] = Null;
+                $data['option'] = json_encode([
+                    'service_category' => $data['service_category'],
+                    'price_room_day' =>  $data['price_room_day'],
+                    'price_room_month' =>  $data['price_room_month'],
+                    'price_house_day' =>  $data['price_house_day'],
+                    'price_house_month' =>  $data['price_house_month'],
+                ]);
+            }
 
-        if ($data['service_category'] == 'dai-han') {
-            $data['option'] = json_encode([
-                'service_category' => $data['service_category'],
-                'datetime_service' =>  $data['datetime_service'],
-            ]);
+            if ($data['service_category'] == 'dai-han') {
+                $data['option'] = json_encode([
+                    'service_category' => $data['service_category'],
+                    'datetime_service' =>  $data['datetime_service'],
+                ]);
+            }
+            unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
+        } else {
+            $check = House::where('service_id', Service::find($data['service_id'])->id)->first();
+            if(empty($check) == false) {
+                return redirect()->route('admin.house.create')->with('Error', 'Loại dịch vụ này đã được sử dụng!');
+            }
+            unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month'], $data['address'], $data['number_of_bedrooms'], $data['area'], $data['area_bedrooms'], $data['rent_price'], $data['option'], $data['convenient']);
         }
-        unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
         // dd($data);
         if ($request->hasFile('images')) {
             $images = [];
@@ -71,22 +83,30 @@ class HouseController extends Controller
     {
         $house = House::find($id);
         $data = $request->all();
-        if ($data['service_category'] == 'ngan-han') {
-            $data['option'] = json_encode([
-                'price_room_day' =>  $data['price_room_day'],
-                'price_room_month' =>  $data['price_room_month'],
-                'price_house_day' =>  $data['price_house_day'],
-                'price_house_month' =>  $data['price_house_month'],
-            ]);
-        }
+        $service = Service::find($data['service_id'])->slug;
+        if ($service == 'cho-thue' || $service == 'chuyen-nhuong') {
+            $data['option'] = Null;
+            if ($data['service_category'] == 'ngan-han') {
+                $data['rent_price'] = Null;
+                $data['option'] = json_encode([
+                    'service_category' => $data['service_category'],
+                    'price_room_day' =>  $data['price_room_day'],
+                    'price_room_month' =>  $data['price_room_month'],
+                    'price_house_day' =>  $data['price_house_day'],
+                    'price_house_month' =>  $data['price_house_month'],
+                ]);
+            }
 
-        if ($data['service_category'] == 'dai-han') {
-            $data['option'] = json_encode([
-                'datetime_service' =>  $data['datetime_service'],
-            ]);
-        }
-        unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
-        // dd($data);
+            if ($data['service_category'] == 'dai-han') {
+                $data['option'] = json_encode([
+                    'service_category' => $data['service_category'],
+                    'datetime_service' =>  $data['datetime_service'],
+                ]);
+            }
+            unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
+        } else {
+            unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month'], $data['address'], $data['number_of_bedrooms'], $data['area'], $data['area_bedrooms'], $data['rent_price'], $data['option'], $data['convenient']);
+        } // dd($data);
         if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $image) {
