@@ -39,12 +39,8 @@ Route::prefix('/')->group(function () {
     })->name('contacts');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
-    Route::get('/blog', function () {
-        return view('client/blog');
-    })->name('blog');
-    Route::get('/blog-details', function () {
-        return view('client/blog-details');
-    })->name('blog-detail');
+    Route::get('/blog', [ClientController::class, 'blog'])->name('blog');
+    Route::get('/blog-details/{id}', [ClientController::class, 'blogDetail'])->name('blog-detail');
 
     Route::get('/about-us', function () {
         return view('client/about-us');
@@ -59,7 +55,7 @@ Route::prefix('/')->group(function () {
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.index');
-    });
+    })->name('dashboard');
 
     // house 
     Route::get('/house', [ControllersHouseController::class, 'index'])->name('house.index');
@@ -88,6 +84,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/create', [BlogController::class, 'form'])->name('blog.create');
     Route::post('/blog/create', [BlogController::class, 'store'])->name('blog.post');
+    Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::put('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
     Route::get('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 });

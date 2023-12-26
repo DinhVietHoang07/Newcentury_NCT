@@ -30,11 +30,11 @@ class InformationController extends Controller
                 $images = $request->file('logo');
                 $path = Storage::disk('public')->put('logo', $images);
                 $data['logo'] = 'storage/' . $path;
-                $this->information->create($data);
             }
+            $this->information->create($data);
             return redirect()->route('admin.information')->with('success', 'Thêm thông tin công ty thành công!');
         } catch (\Throwable $th) {
-            return redirect()->route('admin.information.index');
+            return redirect()->route('admin.dashboard');
         }
     }
     public function update($id, InformationRequest $request)

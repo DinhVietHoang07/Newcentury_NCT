@@ -52,37 +52,16 @@
                         </div>
                         <div class="property-more-pic">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img"
-                                    src="{{ asset('client/img/properties/property-d') }}etails-b1.jpg" alt="">
+                                <img class="product-big-img" src="{{ asset($service->images[0]) }}" alt="">
                             </div>
                             <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
-                                    <div class="pt"
-                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b2.jpg"><img
-                                            src="{{ asset('client/img/properties/thumb-1.jp') }}g" alt=""></div>
-                                    <div class="pt active"
-                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b1.jpg"><img
-                                            src="{{ asset('client/img/properties/thumb-2.jp') }}g" alt=""></div>
-                                    <div class="pt"
-                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b3.jpg"><img
-                                            src="{{ asset('client/img/properties/thumb-3.jp') }}g" alt=""></div>
-                                    <div class="pt"
-                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b4.jpg"><img
-                                            src="{{ asset('client/img/properties/thumb-4.jp') }}g" alt=""></div>
-                                    <div class="pt"
-                                        data-imgbigurl="{{ asset('client/img/properties/property-d') }}etails-b5.jpg"><img
-                                            src="{{ asset('client/img/properties/thumb-5.jp') }}g" alt=""></div>
+                                    @foreach ($service->images as $el)
+                                        <div class="pt" data-imgbigurl="{{ asset($el) }}"><img
+                                                src="{{ asset($el) }}" alt=""></div>
+                                    @endforeach
                                 </div>
                             </div>
-                        </div>
-                        <div class="pd-desc">
-                            <h4>Description</h4>
-                            <p>Learn how to improve your playing quality and even overall understanding of online gaming
-                                and how you perform while playing online. Gaming online is a huge business nowadays and
-                                that means that there are millions of people worldwide at online game sites all the
-                                time. Many are people just like you and me that like to play online and have fun doing
-                                it. Some of these people enjoy it so much, that they often do not even care about
-                                improving their skill and raising their chances of winning.</p>
                         </div>
                         <div class="pd-details-tab">
                             <div class="tab-item">
@@ -105,28 +84,24 @@
                                             <table class="left-table">
                                                 <tbody>
                                                     <tr>
-                                                        <td class="pt-name">Price</td>
-                                                        <td class="p-value">$ 138,000</td>
+                                                        <td class="pt-name">Loại dịch vụ</td>
+                                                        <td class="p-value">{{ $service->service->name }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="pt-name">Property Type</td>
-                                                        <td class="p-value">Villa</td>
+                                                        <td class="pt-name">Địa chỉ</td>
+                                                        <td class="p-value">{{ $service->address }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="pt-name">Year Built</td>
-                                                        <td class="p-value">2016</td>
+                                                        <td class="pt-name">Số phòng ngủ</td>
+                                                        <td class="p-value">{{ $service->number_of_bedrooms }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="pt-name">Bathrooms</td>
-                                                        <td class="p-value">3</td>
+                                                        <td class="pt-name">Diện tích phòng ngủ</td>
+                                                        <td class="p-value">{{ $service->area_bedrooms }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="pt-name">Rooms</td>
-                                                        <td class="p-value">12</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Parking lots</td>
-                                                        <td class="p-value">3</td>
+                                                        <td class="pt-name">Diện tích căn</td>
+                                                        <td class="p-value">{{ $service->area }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="pt-name">Lot area</td>
@@ -170,38 +145,12 @@
                                     </div>
                                     <div class="tab-pane fade" id="tab-2" role="tabpanel">
                                         <div class="pd-table-desc">
-                                            <p>Learn how to improve your playing quality and even overall understanding
-                                                of online gaming and how you perform while playing online. Gaming online
-                                                is a huge business nowadays and that means that there are millions of
-                                                people worldwide at online game sites all the time. Many are people just
-                                                like you and me that like to play online and have fun doing it. Some of
-                                                these people enjoy it so much, that they often do not even care about
-                                                improving their skill and raising their chances of winning.</p>
-                                            <p>Learn how to improve your playing quality and even overall understanding
-                                                of online gaming and how you perform while playing online. Gaming online
-                                                is a huge business nowadays and that means that there are millions of
-                                                people worldwide at online game sites all the time. Many are people just
-                                                like you and me that like to play online and have fun doing it. Some of
-                                                these people enjoy it so much, that they often do not even care about
-                                                improving their skill and raising their chances of winning.</p>
+                                            {!! $service->content !!}
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                         <div class="pd-table-amenities">
-                                            <p>Learn how to improve your playing quality and even overall understanding
-                                                of online gaming and how you perform while playing online. Gaming online
-                                                is a huge business nowadays and that means that there are millions of
-                                                people worldwide at online game sites all the time. Many are people just
-                                                like you and me that like to play online and have fun doing it. Some of
-                                                these people enjoy it so much, that they often do not even care about
-                                                improving their skill and raising their chances of winning.</p>
-                                            <p>Learn how to improve your playing quality and even overall understanding
-                                                of online gaming and how you perform while playing online. Gaming online
-                                                is a huge business nowadays and that means that there are millions of
-                                                people worldwide at online game sites all the time. Many are people just
-                                                like you and me that like to play online and have fun doing it. Some of
-                                                these people enjoy it so much, that they often do not even care about
-                                                improving their skill and raising their chances of winning.</p>
+                                            {!! $service->convenient !!}
                                         </div>
                                     </div>
                                 </div>

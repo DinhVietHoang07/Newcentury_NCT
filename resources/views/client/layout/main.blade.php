@@ -31,6 +31,9 @@
     @php
         $Information = App\Models\Information::first();
         $Service = App\Models\Service::get();
+        $Service_xulythamngam = App\Models\Service::where('slug', 'xu-ly-tham-ngam')->first('id');
+        $House_ser = App\Models\House::where('service_id', $Service_xulythamngam->id)->first();
+        // dd($House_ser);
     @endphp
     <!-- Page Preloder -->
     <div id="preloder">

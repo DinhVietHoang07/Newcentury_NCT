@@ -20,14 +20,14 @@ class BlogController extends Controller
         $data = $this->blog->latest()->get();
         return view('admin.blog.index', compact('data'));
     }
-    public function form($id = null)
+    public function form()
     {
-        if (isset($id)) {
-            $blog = $this->blog->find($id);
-            return view('admin.blog.create', compact('blog'));
-        } else {
-            return view('admin.blog.create');
-        }
+        return view('admin.blog.create');
+    }
+    public function edit($id)
+    {
+        $blog = $this->blog->find($id);
+        return view('admin.blog.create', compact('blog'));
     }
     public function store(BlogRequest $request)
     {

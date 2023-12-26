@@ -15,41 +15,50 @@
                                         <div class="flag-dropdown mt-4" style="min-width: 180px; left: 0 !important;">
                                             <ul>
                                                 @foreach ($Service as $sv)
-                                                    <li class="m-0 p-0 col-12"><a
-                                                            href="{{ route('service', $sv->id) }}">{{ $sv->name }}</a></li>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                                    @if ($sv->slug == 'xu-ly-tham-ngam')
+                                                        @if ($House_ser != null)
+                                                            <li class="m-0 p-0 col-12"><a
+                                                                    href="{{ route('service-detail', $House_ser->id) }}">{{ $sv->name }}</a>
+                                                            </li>
+                                                        @endif
+                                                    @else
+                                                        <li class="m-0 p-0 col-12"><a
+                                                                href="{{ route('service', $sv->id) }}">{{ $sv->name }}</a>
+                                                        </li>
+                                                    @endif
                             </li>
-                            <!-- <li><a href="/po">Agets</a></li> -->
-                            <li><a href="{{ route('blog') }}">News</a></li>
-                            <li><a href="{{ route('about') }}">About</a></li>
-                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                            @endforeach
                         </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-5">
-                    <div class="top-right">
-                        <div class="language-option">
-                            <img src="{{ asset('client/img/vietnam.png') }}" alt="">
-                            <span>Việt Nam</span>
-                            <i class="fa fa-angle-down"></i>
-                            <div class="flag-dropdown">
-                                <ul>
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Germany</a></li>
-                                    <li><a href="#">China</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="#" class="property-sub">Submit Property</a>
-                    </div>
                 </div>
             </div>
         </div>
+        </li>
+        <!-- <li><a href="/po">Agets</a></li> -->
+        <li><a href="{{ route('blog') }}">News</a></li>
+        <li><a href="{{ route('about') }}">About</a></li>
+        <li><a href="{{ route('contact') }}">Contact</a></li>
+        </ul>
+        </nav>
+    </div>
+    <div class="col-lg-5">
+        <div class="top-right">
+            <div class="language-option">
+                <img src="{{ asset('client/img/vietnam.png') }}" alt="">
+                <span>Việt Nam</span>
+                <i class="fa fa-angle-down"></i>
+                <div class="flag-dropdown">
+                    <ul>
+                        <li><a href="#">English</a></li>
+                        <li><a href="#">Germany</a></li>
+                        <li><a href="#">China</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="property-sub">Submit Property</a>
+        </div>
+    </div>
+    </div>
+    </div>
     </div>
     <div class="nav-logo">
         <div class="container">

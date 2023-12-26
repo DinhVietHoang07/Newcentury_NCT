@@ -154,7 +154,7 @@
         }
 
     </script>
-    {{-- [contact] , [information] , [blog], bảo trì, [service ( cung ứng, cho thuê) sửa status thành service loại], [thêm service*] , bannner show 3 house xịn đắt nhất, --}}
+    {{-- [contact] , [information] , [blog], [bảo trì], [service ( cung ứng, cho thuê) sửa status thành service loại], [thêm service*] , [bannner show 3 house xịn đắt nhất], --}}
 
     @if (session('success'))
         <script>
@@ -170,8 +170,8 @@
         <script>
             Swal.fire({
                 title: "Error!",
-                text: '{{ session('error') }}',
-                icon: "Error"
+                text: '{{ session('Error') }}',
+                icon: "error"
             });
         </script>
     @endif

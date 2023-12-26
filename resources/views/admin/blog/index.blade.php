@@ -39,7 +39,7 @@
                                                 <td><img width="80px" src="{{ asset($el->thumbnail) }}" alt="" srcset=""></td>
                                                 <td>{{ $el->viewer }}</td>
                                                 <td>{{ $el->created_at->format('d-m-Y') }}</td>
-                                                <td><span><a href="{{ route('admin.house.edit', $el->id) }}"
+                                                <td><span><a href="{{ route('admin.blog.edit', $el->id) }}"
                                                             data-toggle="tooltip" data-placement="top" title=""
                                                             data-original-title="Edit"><i
                                                                 class="fa fa-pencil color-muted m-r-5"></i> </a>
