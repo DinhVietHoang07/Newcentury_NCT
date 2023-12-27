@@ -13,6 +13,10 @@ class HouseController extends Controller
     public function index()
     {
         $data = House::with('service')->latest()->get();
+        foreach ($data as $key) {
+            $key['option'] = json_decode($key->option);
+        }
+
         // dd($data);
         return view('admin.house.index', compact('data'));
     }
@@ -48,9 +52,11 @@ class HouseController extends Controller
             }
             unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month']);
         } else {
-            $check = House::where('service_id', Service::find($data['service_id'])->id)->first();
-            if(empty($check) == false) {
-                return redirect()->route('admin.house.create')->with('Error', 'Loại dịch vụ này đã được sử dụng!');
+            if (Service::find($data['service_id'])->slug == 'xu-ly-tham-ngam') {
+                $check = House::where('service_id', Service::find($data['service_id'])->id)->first();
+                if (empty($check) == false) {
+                    return redirect()->route('admin.house.create')->with('Error', 'Loại dịch vụ này đã được sử dụng!');
+                }
             }
             unset($data['_token'], $data['service_category'], $data['datetime_service'], $data['price_room_day'], $data['price_room_month'], $data['price_house_day'], $data['price_house_month'], $data['address'], $data['number_of_bedrooms'], $data['area'], $data['area_bedrooms'], $data['rent_price'], $data['option'], $data['convenient']);
         }

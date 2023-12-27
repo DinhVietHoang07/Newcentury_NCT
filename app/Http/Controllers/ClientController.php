@@ -53,6 +53,7 @@ class ClientController extends Controller
             $service->save();
             Cookie::queue(Cookie::make('service' . $service->id, $service->id, 0.5));
         }
+        $service->option = json_decode($service->option);
         return view('client.service-details', [
             'service' => $service
         ]);

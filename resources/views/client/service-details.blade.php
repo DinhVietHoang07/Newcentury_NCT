@@ -52,14 +52,17 @@
                         </div>
                         <div class="property-more-pic">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="{{ asset($service->images[0]) }}" alt="">
+                                <img class="product-big-img"
+                                    src="{{ asset(isset($service->images) ? $service->images[0] : '') }}" alt="">
                             </div>
                             <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
-                                    @foreach ($service->images as $el)
-                                        <div class="pt" data-imgbigurl="{{ asset($el) }}"><img
-                                                src="{{ asset($el) }}" alt=""></div>
-                                    @endforeach
+                                    @if (isset($service->images))
+                                        @foreach ($service->images as $el)
+                                            <div class="pt" data-imgbigurl="{{ asset($el) }}"><img
+                                                    src="{{ asset($el) }}" alt=""></div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -103,42 +106,58 @@
                                                         <td class="pt-name">Diện tích căn</td>
                                                         <td class="p-value">{{ $service->area }}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Lot area</td>
-                                                        <td class="p-value">200 spft</td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                             <table class="right-table">
                                                 <tbody>
+                                                    @if ($service->service->slug == 'cho-thue')
+                                                        @if ($service->option->service_category == 'dai-han')
+                                                            <tr>
+                                                                <td class="pt-name">Thời hạn hợp đồng</td>
+                                                                <td class="p-value">{{ $service->option->datetime_service }}
+                                                                    tháng</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pt-name">Loại cho thuê</td>
+                                                                <td class="p-value">dài hạn</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pt-name">Giá thuê</td>
+                                                                <td class="p-value">{{ $service->rent_price }} VND</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td class="pt-name">Loại cho thuê</td>
+                                                                <td class="p-value">
+                                                                    ngắn hạn
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pt-name">Thuê phòng theo ngày</td>
+                                                                <td class="p-value">{{ $service->option->price_room_day }} VND</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pt-name">Thuê phòng theo tháng</td>
+                                                                <td class="p-value">{{ $service->option->price_room_month }} VND
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pt-name">Thuê nhà theo ngày</td>
+                                                                <td class="p-value">{{ $service->option->price_house_day }} VND
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="pt-name">Thuê nhà theo tháng</td>
+                                                                <td class="p-value">{{ $service->option->price_house_month }} VND
+                                                                </td>
+                                                            </tr>
+                                                        @endif
+                                                    @else
                                                     <tr>
-                                                        <td class="pt-name">Agent</td>
-                                                        <td class="p-value">Adam Smith</td>
+                                                        <td class="pt-name">Giá chuyển nhượng</td>
+                                                        <td class="p-value">{{ $service->rent_price }} VND</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Reference</td>
-                                                        <td class="p-value">#2019</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Contract type</td>
-                                                        <td class="p-value">Sale</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Beds</td>
-                                                        <td class="p-value">4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Garages</td>
-                                                        <td class="p-value">2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Home area</td>
-                                                        <td class="p-value">1200 sqft</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="pt-name">Gara Size</td>
-                                                        <td class="p-value">200 sqft</td>
-                                                    </tr>
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>

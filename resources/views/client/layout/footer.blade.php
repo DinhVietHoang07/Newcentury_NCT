@@ -50,7 +50,7 @@
                             <ul class="contact-option">
                                 <li><i class="fa fa-map-marker"></i>{{ isset($Information) ? $Information->address : '16 Creek Ave, <span>NY</span>' }}</li>
                                 <li><i class="fa fa-phone"></i>{{ isset($Information) ? $Information->phone : '(+12) 345 6789' }}</li>
-                                <li><i class="fa fa-envelope"></i> {{ isset($Information) ? $Information->facebook : 'info.colorlib@gmail.com' }}</li>
+                                <li><i class="fa fa-envelope"></i> {{ isset($Information) ? $Information->email : 'info.colorlib@gmail.com' }}</li>
                                 {{-- <li><i class="fa fa-clock-o"></i> Mon - Sat, 08 AM - 06 PM</li> --}}
                             </ul>
                         </div>

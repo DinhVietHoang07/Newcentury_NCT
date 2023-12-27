@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="form-group row area"
                                         style="{{ isset($house) && $house->area != null ? '' : 'display: none;' }}">
-                                        <label class="col-lg-3 col-form-label" for="area">Diện tích căn phòng(m2) <span
+                                        <label class="col-lg-3 col-form-label" for="area">Diện tích căn nhà(m2) <span
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -150,10 +150,10 @@
                                                 class="form-control @error('service_category') border border-danger @enderror"
                                                 id="service_category" name="service_category">
                                                 <option>Chọn loại cho thuê</option>
-                                                <option {{ isset($house) && isset($house->option) ? 'selected' : '' }}
+                                                <option {{ isset($house) && isset($house->option) && $house->option->service_category == 'dai-han' ? 'selected' : '' }}
                                                     value="dai-han" data-slug="dai-han">
                                                     Dài hạn</option>
-                                                <option {{ isset($house) && isset($house->option) ? 'selected' : '' }}
+                                                <option {{ isset($house) && isset($house->option) && $house->option->service_category == 'ngan-han' ? 'selected' : '' }}
                                                     value="ngan-han" data-slug="ngan-han">
                                                     Ngắn hạn</option>
                                             </select>

@@ -9,7 +9,7 @@
                             <li class="active"><a href="{{ route('home') }}">HOME</a></li>
                             <li>
                                 <div class="top-right p-0 m-0">
-                                    <div class="language-option">
+                                    <div class="language-option m-0">
                                         <a href="#">SERVICE</a>
                                         <i class="fa fa-angle-down"></i>
                                         <div class="flag-dropdown mt-4" style="min-width: 180px; left: 0 !important;">
@@ -40,21 +40,12 @@
         </ul>
         </nav>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-5 d-flex align-items-center justify-content-end">
         <div class="top-right">
             <div class="language-option">
                 <img src="{{ asset('client/img/vietnam.png') }}" alt="">
                 <span>Việt Nam</span>
-                <i class="fa fa-angle-down"></i>
-                <div class="flag-dropdown">
-                    <ul>
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Germany</a></li>
-                        <li><a href="#">China</a></li>
-                    </ul>
-                </div>
             </div>
-            <a href="#" class="property-sub">Submit Property</a>
         </div>
     </div>
     </div>
