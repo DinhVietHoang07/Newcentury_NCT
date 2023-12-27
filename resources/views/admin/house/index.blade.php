@@ -20,7 +20,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">House</h4>
+                            <h4 class="card-title">Nhà</h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
@@ -29,7 +29,7 @@
                                             <th>Địa chỉ</th>
                                             <th>Số phòng ngủ</th>
                                             <th>Diện tích phòng ngủ (m<sup>2</sup>)</th>
-                                            <th>Diện tích căn (m<sup>2</sup>)</th>
+                                            <th>Diện tích căn nhà (m<sup>2</sup>)</th>
                                             <th>Giá (VNĐ)</th>
                                             <th>Loại dịch vụ</th>
                                             <th>Chức năng</th>
@@ -37,24 +37,29 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($data as $el)
-                                            <tr id="tr{{ $el->id }}">
-                                                <td>{{ $el->house_name }}</td>
-                                                <td>{{ isset($el->address) ? $el->address : '~~~' }}</td>
-                                                <td>{{ isset($el->number_of_bedrooms) ? $el->number_of_bedrooms : '~~~' }}</td>
-                                                <td>{{ isset($el->area_bedrooms) ? $el->area_bedrooms : '~~~' }}</td>
-                                                <td>{{ isset($el->area) ? $el->area : '~~~' }}</td>
-                                                <td>{{ isset($el->rent_price) ? number_format($el->rent_price) : '~~~' }}</td>
-                                                <td>{{ $el->service->name }}</td>
-                                                <td><span><a href="{{ route('admin.house.edit', $el->id) }}"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Edit"><i
-                                                                class="fa fa-pencil color-muted m-r-5"></i> </a>
-                                                        <a data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Close"><i data-id="{{ $el->id }}"
-                                                                data-route="{{ route('admin.house.delete', $el->id) }}"
-                                                                class="fa fa-close color-danger sweet-success-cancel"></i></a></span>
-                                                </td>
-                                            </tr>
+                                            @if ($el->service->slug == 'cho-thue' || $el->service->slug == 'chuyen-nhuong')
+                                                <tr id="tr{{ $el->id }}">
+                                                    <td>{{ $el->house_name }}</td>
+                                                    <td>{{ isset($el->address) ? $el->address : '~~~' }}</td>
+                                                    <td>{{ isset($el->number_of_bedrooms) ? $el->number_of_bedrooms : '~~~' }}
+                                                    </td>
+                                                    <td>{{ isset($el->area_bedrooms) ? $el->area_bedrooms : '~~~' }}</td>
+                                                    <td>{{ isset($el->area) ? $el->area : '~~~' }}</td>
+                                                    <td>{{ isset($el->rent_price) ? number_format($el->rent_price) : number_format($el->option->price_room_month) }}
+                                                    </td>
+                                                    <td>{{ $el->service->name }}</td>
+                                                    <td><span><a href="{{ route('admin.house.edit', $el->id) }}"
+                                                                data-toggle="tooltip" data-placement="top" title=""
+                                                                data-original-title="Edit"><i
+                                                                    class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                                            <a data-toggle="tooltip" data-placement="top" title=""
+                                                                data-original-title="Close"><i
+                                                                    data-id="{{ $el->id }}"
+                                                                    data-route="{{ route('admin.house.delete', $el->id) }}"
+                                                                    class="fa fa-close color-danger sweet-success-cancel"></i></a></span>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -65,6 +70,49 @@
                                             <th>Diện tích phòng ngủ (m<sup>2</sup>)</th>
                                             <th>Diện tích căn (m<sup>2</sup>)</th>
                                             <th>Giá (VNĐ)</th>
+                                            <th>Loại dịch vụ</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Bảo trì</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered zero-configuration">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên</th>
+                                            <th>Loại dịch vụ</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $el)
+                                            @if ($el->service->slug == 'bao-tri' || $el->service->slug == 'xu-ly-tham-ngam')
+                                                <tr id="tr{{ $el->id }}">
+                                                    <td>{{ $el->house_name }}</td>
+                                                    <td>{{ $el->service->name }}</td>
+                                                    <td><span><a href="{{ route('admin.house.edit', $el->id) }}"
+                                                                data-toggle="tooltip" data-placement="top" title=""
+                                                                data-original-title="Edit"><i
+                                                                    class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                                            <a data-toggle="tooltip" data-placement="top" title=""
+                                                                data-original-title="Close"><i
+                                                                    data-id="{{ $el->id }}"
+                                                                    data-route="{{ route('admin.house.delete', $el->id) }}"
+                                                                    class="fa fa-close color-danger sweet-success-cancel"></i></a></span>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Tên</th>
                                             <th>Loại dịch vụ</th>
                                             <th>Chức năng</th>
                                         </tr>
