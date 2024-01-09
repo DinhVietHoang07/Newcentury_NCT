@@ -63,48 +63,6 @@
                     {{-- </div> --}}
                 </div>
             </div>
-            {{-- <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="blog-details-pic">
-                        <div class="bd-pic-item small-item set-bg" data-setbg="{{asset('client/img/blog/blog-details-1.jpg')}}"></div>
-                        <div class="bd-pic-item small-item set-bg" data-setbg="{{asset('client/img/blog/blog-details-2.jpg')}}"></div>
-                        <div class="bd-pic-item large-item set-bg" data-setbg="{{asset('client/img/blog/blog-details-3.jpg')}}"></div>
-                        <div class="bd-pic-item wide-item set-bg" data-setbg="{{asset('client/img/blog/blog-details-4.jpg')}}"></div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="blog-more-details">
-                        <h4>Fliers and business cards can be tacked.</h4>
-                        <p>But before doing so, check out with the human resource department before placing the
-                            information as most of the HR departments make it compulsory to consult them. Parents are
-                            required to be in regular touch with the teachers to know about the progress of the child
-                            and they have meetings from time to time. Do not miss this opportunity and spread the word.
-                            Hand them the business card and fliers personally at the meeting, instead of just giving the
-                            contact number. Get involved with fundraiser at schools, as it’s a nice approach to market
-                            business. Prior to handing out the order received, collect all necessary information like
-                            business card pack, fliers, with proper information. Information can be based on what is the
-                            company about, what are the products and services provided, or how to get in touch with the
-                            company. In each individual order, carefully place all of them and seal the package
-                            properly. Presentation, too, is of importance and should be paid attention.</p>
-                    </div>
-                    <div class="tag-share-option">
-                        <div class="tags">
-                            <a href="#">Real Estate</a>
-                            <a href="#">Properties</a>
-                        </div>
-                        <div class="social-share">
-                            <span>Share:</span>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">

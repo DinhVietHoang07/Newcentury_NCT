@@ -149,7 +149,7 @@ ol {
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: top center;
+	background-position: center;
 }
 
 .spad {
@@ -1773,7 +1773,16 @@ ol {
 	border: 1px solid #2cbdb8;
 	cursor: pointer;
 }
-
+.btn-contact {
+	font-size: 16px;
+	height: 50px;
+	background: #2cbdb8;
+	color: #ffffff;
+	padding: 8px 20px;
+	border: none;
+	border: 1px solid #2cbdb8;
+	cursor: pointer;
+}
 .property-sidebar .best-agents h4 {
 	font-size: 22px;
 	font-weight: 600;

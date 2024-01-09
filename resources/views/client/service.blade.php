@@ -123,31 +123,44 @@
                                     <div class="col-md-8">
                                         <div class="property-text">
                                             {{-- <div class="s-text">For Sale</div> --}}
-                                            <h5 class="r-title"><a href="{{ route('service-detail', $el->id) }}" style="color:black">
+                                            <h5 class="r-title"><a href="{{ route('service-detail', $el->id) }}"
+                                                    style="color:black">
                                                     {{ $el->house_name }}</a></h5>
                                             <div class="room-price">
-                                                <span>Giá:</span>
-                                                <h5>{{ $el->house_name }}</h5>
+                                                @if ($el->service->slug != 'bao-tri')
+                                                    <span>Giá:</span>
+                                                    <h5>{{ $el->house_name }}</h5>
+                                                @else
+                                                    <span>Lượt xem:</span>
+                                                    <h5>{{ $el->viewer }}</h5>
+                                                @endif
                                             </div>
                                             <div class="room-price">
                                                 <span>Loại hình:</span>
                                                 <h5>{{ $el->service->name }}</h5>
                                             </div>
-                                            <div class="properties-location"><i class="icon_pin"></i> {{ $el->address }}</div>
-                                            <ul class="room-features">
-                                                <li>
-                                                    <i class="fa fa-arrows"></i>
-                                                    <p>{{ $el->area }} sqft</p>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-bed"></i>
-                                                    <p>{{ $el->number_of_bedrooms }} Bed Room</p>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                    <p>{{ $el->area_bedrooms }} sqft Bed</p>
-                                                </li>
-                                            </ul>
+                                            @if ($el->service->slug != 'bao-tri')
+                                                <div class="properties-location"><i class="icon_pin"></i>
+                                                    {{ $el->address }}</div>
+                                                <ul class="room-features">
+                                                    <li>
+                                                        <i class="fa fa-arrows" data-toggle="tooltip" data-placement="top"
+                                                            title="Diện tích nhà" data-original-title=""></i>
+                                                        <p>{{ $el->area }} m<sup>2</sup></p>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-bed" data-toggle="tooltip" data-placement="top"
+                                                            title="Phòng ngủ" data-original-title=""></i>
+                                                        <p>{{ $el->number_of_bedrooms }} Phòng</p>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-arrows-alt" data-toggle="tooltip"
+                                                            data-placement="top" title="Diện tích phòng"
+                                                            data-original-title=""></i>
+                                                        <p>{{ $el->area_bedrooms }} m<sup>2</sup></p>
+                                                    </li>
+                                                </ul>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
