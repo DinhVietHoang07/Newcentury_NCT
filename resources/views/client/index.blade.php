@@ -5,7 +5,8 @@
         <div class="hero-items owl-carousel">
             @if (count($banner) == 3)
                 @foreach ($banner as $index => $bn)
-                    <div class="single-hero-item set-bg" data-setbg="{{ asset(isset($bn->images[0]) ? $bn->images[0] : 'client/img/hero/hero-1.jpg') }}">
+                    <div class="single-hero-item set-bg"
+                        data-setbg="{{ asset(isset($bn->images[0]) ? $bn->images[0] : 'client/img/hero/hero-1.jpg') }}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-8 offset-lg-2">
@@ -154,7 +155,8 @@
                 @if (count($banner) == 3)
                     @foreach ($banner as $bn)
                         <div class="item">
-                            <img src="{{ asset(isset($bn->images[0]) ? $bn->images[0] : 'client/img/hero/dot-1.jpg') }}"  height="94px" alt="">
+                            <img src="{{ asset(isset($bn->images[0]) ? $bn->images[0] : 'client/img/hero/dot-1.jpg') }}"
+                                height="94px" alt="">
                         </div>
                     @endforeach
                 @else
@@ -285,236 +287,55 @@
             </div>
             <div class="row">
                 <div class="feature-carousel owl-carousel">
-                    <div class="col-lg-4">
-                        <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-1.jpg') }}">
-                                <div class="pic-tag">
-                                    <div class="f-text">feauture</div>
-                                    <div class="s-text">For Sale</div>
-                                </div>
-                                <div class="feature-author">
-                                    <div class="fa-pic">
-                                        <img src="{{ asset('client/img/feature/f-author-1.jpg') }}" alt="">
+                    @foreach ($forRent as $for)
+                        <div class="col-lg-4">
+                            <div class="feature-item">
+                                <div class="fi-pic set-bg"
+                                    data-setbg="{{ asset(isset($for->images) ? $for->images[0] : 'client/img/feature/feature-1.jpg') }}">
+                                    <div class="pic-tag">
+                                        <div class="f-text">feauture</div>
+                                        {{-- <div class="s-text">For Sale</div> --}}
                                     </div>
-                                    <div class="fa-text">
-                                        <span>Rena Simmons</span>
+                                    <div class="feature-author">
+                                        <div class="fa-pic">
+                                            <img src="{{ asset(isset($for->images) ? $for->images[0] : 'client/img/feature/feature-1.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <div class="fa-text">
+                                            <span>Admin</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="fi-text">
-                                <div class="inside-text">
-                                    <h4>French Riviera Villa</h4>
-                                    <ul>
-                                        <li><i class="fa fa-map-marker"></i> 180 York Road, London, UK</li>
-                                        <li><i class="fa fa-tag"></i> Villa</li>
+                                <div class="fi-text">
+                                    <div class="inside-text">
+                                        <h4>French Riviera Villa</h4>
+                                        <ul>
+                                            <li><i class="fa fa-map-marker"></i> {{ $for->address }}</li>
+                                            <li><i class="fa fa-tag"></i> Service</li>
+                                        </ul>
+                                        {{-- <h5 class="price">$5900<span>/month</span></h5> --}}
+                                    </div>
+                                    <ul class="room-features">
+                                        <li>
+                                            <i class="fa fa-arrows" data-toggle="tooltip" data-placement="top"
+                                                title="Diện tích nhà" data-original-title=""></i>
+                                            <p>{{ $for->area }} m<sup>2</sup></p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" data-toggle="tooltip" data-placement="top"
+                                                title="Phòng ngủ" data-original-title=""></i>
+                                            <p>{{ $for->number_of_bedrooms }} Phòng</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-arrows-alt" data-toggle="tooltip" data-placement="top"
+                                                title="Diện tích phòng" data-original-title=""></i>
+                                            <p>{{ $for->area_bedrooms }} m<sup>2</sup></p>
+                                        </li>
                                     </ul>
-                                    <h5 class="price">$5900<span>/month</span></h5>
                                 </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>780 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>4</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>2</p>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-2.jpg') }}">
-                                <div class="pic-tag">
-                                    <div class="f-text">feauture</div>
-                                    <div class="s-text">For Sale</div>
-                                </div>
-                                <div class="feature-author">
-                                    <div class="fa-pic">
-                                        <img src="{{ asset('client/img/feature/f-author-2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="fa-text">
-                                        <span>Rena Johnston</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="fi-text">
-                                <div class="inside-text">
-                                    <h4>French Riviera Villa</h4>
-                                    <ul>
-                                        <li><i class="fa fa-map-marker"></i> 180 York Road, London, UK</li>
-                                        <li><i class="fa fa-tag"></i> Villa</li>
-                                    </ul>
-                                    <h5 class="price">$5900<span>/month</span></h5>
-                                </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>780 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>4</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>2</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-3.jpg') }}">
-                                <div class="pic-tag">
-                                    <div class="f-text">feauture</div>
-                                    <div class="s-text">For Sale</div>
-                                </div>
-                                <div class="feature-author">
-                                    <div class="fa-pic">
-                                        <img src="{{ asset('client/img/feature/f-author-3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="fa-text">
-                                        <span>Jonathan Walters</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="fi-text">
-                                <div class="inside-text">
-                                    <h4>French Riviera Villa</h4>
-                                    <ul>
-                                        <li><i class="fa fa-map-marker"></i> 180 York Road, London, UK</li>
-                                        <li><i class="fa fa-tag"></i> Villa</li>
-                                    </ul>
-                                    <h5 class="price">$5900<span>/month</span></h5>
-                                </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>780 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>4</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>2</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-4.jpg') }}">
-                                <div class="pic-tag">
-                                    <div class="f-text">feauture</div>
-                                    <div class="s-text">For Sale</div>
-                                </div>
-                                <div class="feature-author">
-                                    <div class="fa-pic">
-                                        <img src="{{ asset('client/img/feature/f-author-3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="fa-text">
-                                        <span>Jonathan Walters</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="fi-text">
-                                <div class="inside-text">
-                                    <h4>French Riviera Villa</h4>
-                                    <ul>
-                                        <li><i class="fa fa-map-marker"></i> 180 York Road, London, UK</li>
-                                        <li><i class="fa fa-tag"></i> Villa</li>
-                                    </ul>
-                                    <h5 class="price">$5900<span>/month</span></h5>
-                                </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>780 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>4</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>2</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="{{ asset('client/img/feature/feature-5.jpg') }}">
-                                <div class="pic-tag">
-                                    <div class="f-text">feauture</div>
-                                    <div class="s-text">For Sale</div>
-                                </div>
-                                <div class="feature-author">
-                                    <div class="fa-pic">
-                                        <img src="{{ asset('client/img/feature/f-author-3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="fa-text">
-                                        <span>Jonathan Walters</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="fi-text">
-                                <div class="inside-text">
-                                    <h4>French Riviera Villa</h4>
-                                    <ul>
-                                        <li><i class="fa fa-map-marker"></i> 180 York Road, London, UK</li>
-                                        <li><i class="fa fa-tag"></i> Villa</li>
-                                    </ul>
-                                    <h5 class="price">$5900<span>/month</span></h5>
-                                </div>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>780 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>4</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>2</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -555,88 +376,50 @@
         </div>
         <div class="container">
             <div class="top-properties-carousel owl-carousel">
-                <div class="single-top-properties">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="stp-pic">
-                                <img src="{{ asset('client/img/properties/properties-1.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="stp-text">
-                                <div class="s-text">For Sale</div>
-                                <h2>Villa 9721 Glen Creek</h2>
-                                <div class="room-price">
-                                    <span>Start From:</span>
-                                    <h4>$3.000.000</h4>
+                @foreach ($baoTri as $bt)
+                    <div class="single-top-properties">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="stp-pic">
+                                    <img src="{{ asset($bt->images[0]) }}" alt="">
                                 </div>
-                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston
-                                    Spa, NY</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>5201 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>8 Bed Room</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>7 Baths Bed</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>1 Garage</p>
-                                    </li>
-                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="stp-text">
+                                    {{-- <div class="s-text">For Sale</div> --}}
+                                    <h2>{{ $bt->house_name }}</h2>
+                                    {{-- <div class="room-price">
+                                        <span>Start From:</span>
+                                        <h4>$3.000.000</h4>
+                                    </div> --}}
+                                    <div class="properties-location"><i class="fa fa-eye"></i>Lượt xem:
+                                        {{ $bt->viewer }}</div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt
+                                        ut labore et dolore magna aliqua.</p>
+                                    <ul class="room-features">
+                                        <li>
+                                            <i class="fa fa-arrows"></i>
+                                            <p>5201 sqft</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed"></i>
+                                            <p>8 Bed Room</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bath"></i>
+                                            <p>7 Baths Bed</p>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-car"></i>
+                                            <p>1 Garage</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-top-properties">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="stp-pic">
-                                <img src="{{ asset('client/img/properties/properties-2.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="stp-text">
-                                <div class="s-text">For Sale</div>
-                                <h2>Villa 9721 Glen Creek</h2>
-                                <div class="room-price">
-                                    <span>Start From:</span>
-                                    <h4>$3.000.000</h4>
-                                </div>
-                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston
-                                    Spa, NY</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                <ul class="room-features">
-                                    <li>
-                                        <i class="fa fa-arrows"></i>
-                                        <p>5201 sqft</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bed"></i>
-                                        <p>8 Bed Room</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bath"></i>
-                                        <p>7 Baths Bed</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-car"></i>
-                                        <p>1 Garage</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -738,48 +521,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="single-blog-item">
-                        <div class="sb-pic">
-                            <img src="{{ asset('client/img/blog/latest-1.jpg') }}" alt="">
-                        </div>
-                        <div class="sb-text">
-                            <ul>
-                                <li><i class="fa fa-user"></i> Adam Smith</li>
-                                <li><i class="fa fa-clock-o"></i> 18th Jan, 2019</li>
-                            </ul>
-                            <h4><a href="#">Enhance Your Brand Potential With Giant.</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-blog-item">
-                        <div class="sb-pic">
-                            <img src="{{ asset('client/img/blog/latest-2.jpg') }}" alt="">
-                        </div>
-                        <div class="sb-text">
-                            <ul>
-                                <li><i class="fa fa-user"></i> Adam Smith</li>
-                                <li><i class="fa fa-clock-o"></i> 18th Jan, 2019</li>
-                            </ul>
-                            <h4><a href="#">Illustration In Marketing Materials</a></h4>
+                @foreach ($blogs as $item)
+                    <div class="col-lg-4">
+                        <div class="single-blog-item">
+                            <div class="sb-pic">
+                                <img src="{{ asset($item->thumbnail) }}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <ul>
+                                    <li><i class="fa fa-user"></i> Admin</li>
+                                    <li><i class="fa fa-clock-o"></i> {{ $item->created_at->format('D m, Y') }}</li>
+                                    <li><i class="fa fa-eye"></i> {{ $item->viewer }} xem</li>
+                                </ul>
+                                <h4><a href="{{ route('blog-detail', $item->id) }}">{{ $item->title }}</a></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-blog-item">
-                        <div class="sb-pic">
-                            <img src="{{ asset('client/img/blog/latest-3.jpg') }}" alt="">
-                        </div>
-                        <div class="sb-text">
-                            <ul>
-                                <li><i class="fa fa-user"></i> Adam Smith</li>
-                                <li><i class="fa fa-clock-o"></i> 18th Jan, 2019</li>
-                            </ul>
-                            <h4><a href="#">Branding Do You Know Who You Are</a></h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

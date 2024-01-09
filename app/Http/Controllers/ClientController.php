@@ -21,19 +21,42 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $banner = $this->house->orderBy('viewer', 'DESC')->limit(3)->get();
+        $banner = $this->house->with(['Service' => function ($query) {
+            $query->where('slug', 'cho-thue');
+        }])->orderBy('viewer', 'DESC')->limit(3)->get();
+        // dd($banner);
         foreach ($banner as $bn) {
             if ($bn->images != null) {
                 $bn->images = json_decode($bn->images);
             }
         }
+        $serBaotri = $this->service->where('slug', '=', 'bao-tri')->first('id');
+        $serChuyenNhuong = $this->service->where('slug', '=', 'chuyen-nhuong')->first('id');
+        $serChoThue = $this->service->where('slug', '=', 'cho-thue')->first('id');
+        $baoTri = $this->house->where('service_id', '=', $serBaotri->id)->orderBy('viewer', 'DESC')->get();
+        $forRent = $this->house->where('service_id', '=', $serChuyenNhuong->id)->orwhere('service_id', '=', $serChoThue->id)->orderBy('viewer', 'DESC')->get();
+        
+        $blogs = $this->blog->orderBy('viewer', 'DESC')->limit(3)->get();
+
+        // dd($forRent);
+        foreach ($forRent as $fr) {
+            if ($fr->images != null) {
+                $fr->images = json_decode($fr->images);
+            }
+        }
+
+        foreach ($baoTri as $bt) {
+            if ($bt->images != null) {
+                $bt->images = json_decode($bt->images);
+            }
+        }
         // dd($banner);
-        return view('client.index', compact('banner'));
+        return view('client.index', compact('banner', 'baoTri', 'forRent', 'blogs'));
     }
 
     public function service($id)
     {
-        $service = $this->house->where('service_id', $id)->paginate(5);
+        $service = $this->house->with('service')->where('service_id', $id)->paginate(5);
         return view('client.service', [
             'title' => $this->service->find($id)->name,
             'service' => $service
